@@ -1,3 +1,13 @@
+import { Outlet } from 'react-router-dom';
+import MainNavigation from '../components/MainNavigation';
+
 export const Root = () => {
-  return <p>Thats my root</p>;
+  return (
+    <>
+      <MainNavigation />
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
 };
