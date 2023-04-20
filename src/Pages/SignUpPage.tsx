@@ -1,4 +1,6 @@
-import SignupCard from '../components/SignUpCard';
+import SignupCard from '../Components/SignUpCard';
+
+//logic
 
 export const SignUpPage = () => {
   return <SignupCard />;

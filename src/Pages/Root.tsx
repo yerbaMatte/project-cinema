@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import MainNavigation from '../components/MainNavigation';
+import MainNavigation from '../Components/MainNavigation';
 
 export const Root = () => {
   return (
