@@ -1,7 +1,14 @@
-import SignupCard from '../Components/SignUpCard';
+import SignUpCard from '../Components/Auth/SignUpCard';
 
-//logic
+const initialValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+};
+
+type values = typeof initialValues;
 
 export const SignUpPage = () => {
-  return <SignupCard />;
+  return <SignUpCard />;
 };

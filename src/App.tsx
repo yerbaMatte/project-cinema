@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Root } from './Pages/Root';
 import { SignUpPage } from './Pages/SignUpPage';
+import { SignInPage } from './Pages/SignInPage';
+import { Root } from './Pages/Root';
 
 function App() {
   const router = createBrowserRouter([
@@ -8,8 +9,8 @@ function App() {
       path: '/',
       element: <Root />,
       children: [
-        { index: true, element: <h1>Thats my Main Page</h1> },
-        { path: 'signin', element: <p>Sign In</p> },
+        { index: true, element: <h1>Main Page</h1> },
+        { path: 'signin', element: <SignInPage /> },
         { path: 'signup', element: <SignUpPage /> },
       ],
     },

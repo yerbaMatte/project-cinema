@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.10.6",
     "@gatsbyjs/reach-router": "^2.0.1",
     "@reduxjs/toolkit": "^1.9.3",
+    "firebase": "^9.20.0",
     "formik": "^2.2.9",
     "framer-motion": "^10.12.2",
     "react": "^18.2.0",

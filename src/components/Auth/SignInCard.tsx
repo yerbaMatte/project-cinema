@@ -1,4 +1,5 @@
 import { Formik, Form, Field } from 'formik';
+// Chakra UI
 import {
   Flex,
   Box,
@@ -17,27 +18,48 @@ import {
 import { Link } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-export default function SignupCard() {
+import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase';
+
+export default function SignUpCard() {
   const [showPassword, setShowPassword] = useState(false);
+
   const initialValues = {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
   };
-  type values = typeof initialValues;
+
+  type Values = typeof initialValues;
 
   type fieldType = {
     field: {
       name: string;
-      value: any;
+      value: string;
       onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
       onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
     };
   };
 
+  const loginHandler = async () => {
+    const { user } = await signInWithEmailAndPassword(
+      auth,
+      'mime@gmail.com',
+      '123456789'
+    );
+    console.log(user);
+
+    await updateProfile(user, {
+      displayName: 'Majlo',
+    });
+
+    console.log(user.displayName);
+  };
+
   return (
     <>
+      <button onClick={loginHandler}>LOGIN</button>
       <Flex
         minH={'100vh'}
         align={'center'}
@@ -47,45 +69,28 @@ export default function SignupCard() {
         {' '}
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+            <Heading fontSize={'4xl'}>Sign In</Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
-              to enjoy all of our cool features 🎥
+              welcome back!
             </Text>
           </Stack>
           <Formik
             initialValues={initialValues}
-            onSubmit={(values: values, { setSubmitting }) => {
-              console.log(values);
-              // setSubmitting(false);
+            onSubmit={({ firstName, lastName, email, password }, actions) => {
+              signInWithEmailAndPassword(auth, email, password)
+                .then((userCred) => {
+                  console.log(userCred);
+                })
+                .catch((err) => console.log(err));
+
+              actions.setSubmitting(false);
             }}
           >
             {({ isSubmitting }) => (
               <Form>
-                <HStack>
-                  <Box>
-                    <Field name='firstName'>
-                      {({ field }: fieldType) => (
-                        <FormControl id='firstName' isRequired>
-                          <FormLabel>First Name</FormLabel>
-                          <Input {...field} type='text' />
-                        </FormControl>
-                      )}
-                    </Field>
-                  </Box>
-                  <Box>
-                    <Field name='lastName'>
-                      {({ field }: fieldType) => (
-                        <FormControl id='lastName' isRequired>
-                          <FormLabel>Last Name</FormLabel>
-                          <Input {...field} type='text' />
-                        </FormControl>
-                      )}
-                    </Field>
-                  </Box>
-                </HStack>
                 <Field name='email'>
                   {({ field }: fieldType) => (
-                    <FormControl id='email' isRequired>
+                    <FormControl id='email'>
                       <FormLabel>Email address</FormLabel>
                       <Input {...field} type='email' />
                     </FormControl>
@@ -93,7 +98,7 @@ export default function SignupCard() {
                 </Field>
                 <Field name='password'>
                   {({ field }: fieldType) => (
-                    <FormControl id='password' isRequired>
+                    <FormControl id='password'>
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -126,16 +131,8 @@ export default function SignupCard() {
                       bg: 'blue.500',
                     }}
                   >
-                    Sign up
+                    Sign in
                   </Button>
-                </Stack>
-                <Stack pt={6}>
-                  <Text align={'center'}>
-                    Already a user?{' '}
-                    <Link to='/signin' color={'blue.400'}>
-                      Login
-                    </Link>
-                  </Text>
                 </Stack>
               </Form>
             )}
