@@ -15,6 +15,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@gatsbyjs/reach-router": "^2.0.1",
+    "@react-native-firebase/app": "^17.4.2",
     "@reduxjs/toolkit": "^1.9.3",
     "firebase": "^9.20.0",
     "formik": "^2.2.9",
