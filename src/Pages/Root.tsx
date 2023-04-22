@@ -1,10 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import MainNavigation from '../Components/MainNavigation';
+import MainNavigation from '../components/MainNavigation';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 export const Root = () => {
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   return (
     <>
-      <MainNavigation />
+      <MainNavigation loginStatus={isLoggedIn} />
       <main>
         <Outlet />
       </main>

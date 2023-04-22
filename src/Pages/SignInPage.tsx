@@ -1,26 +1,28 @@
 import SignInCard from '../components/Auth/SignInCard';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase';
-import { FormikActions } from '../components/Auth/authTypes';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../store/store';
+import { signActions } from '../store/auth-slice';
+import { initialTypes, loginCred } from '../components/Auth/authTypes';
 
-export const initialValues = {
-  email: '',
-  password: '',
-};
-
-export async function onSubmitHandler(
-  { email, password }: typeof initialValues,
-  actions: FormikActions
-) {
-  const { user } = await signInWithEmailAndPassword(auth, email, password);
-
-  console.log(user);
-
-  actions.setSubmitting(false);
-}
-
+// test data
 // test@gmail.com
 // 123456789
+//
 export const SignInPage = () => {
-  return <SignInCard />;
+  const initialValues: loginCred = {
+    email: '',
+    password: '',
+  };
+
+  async function loginHandler({ email, password }: typeof initialValues) {
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+  }
+
+  return (
+    <>
+      <SignInCard initialValues={initialValues} loginHandler={loginHandler} />
+    </>
+  );
 };

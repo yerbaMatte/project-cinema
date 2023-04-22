@@ -24,7 +24,11 @@ import {
 
 import { Link as RouterLink } from 'react-router-dom';
 
-export default function MainNavigation() {
+export default function MainNavigation({
+  loginStatus,
+}: {
+  loginStatus: boolean;
+}) {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -76,25 +80,29 @@ export default function MainNavigation() {
           direction={'row'}
           spacing={6}
         >
-          <RouterLink to="signin">
-            <Button fontSize={'sm'} fontWeight={400} variant={'outline'}>
-              Sign In
-            </Button>
-          </RouterLink>
-          <RouterLink to="signup">
-            <Button
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'blue.400'}
-              _hover={{
-                bg: 'blue.300',
-              }}
-            >
-              Sign Up
-            </Button>
-          </RouterLink>
+          {!loginStatus && (
+            <>
+              <RouterLink to="signin">
+                <Button fontSize={'sm'} fontWeight={400} variant={'outline'}>
+                  Sign In
+                </Button>
+              </RouterLink>
+              <RouterLink to="signup">
+                <Button
+                  display={{ base: 'none', md: 'inline-flex' }}
+                  fontSize={'sm'}
+                  fontWeight={600}
+                  color={'white'}
+                  bg={'blue.400'}
+                  _hover={{
+                    bg: 'blue.300',
+                  }}
+                >
+                  Sign Up
+                </Button>
+              </RouterLink>
+            </>
+          )}
         </Stack>
       </Flex>
 

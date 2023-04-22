@@ -20,9 +20,11 @@ export type FormikActions = {
   setTouched: (touched: Record<string, boolean>) => void;
 };
 
-export type initialTypes = {
+export interface initialTypes {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-};
+}
+
+export type loginCred = Omit<initialTypes, 'firstName' | 'lastName'>;

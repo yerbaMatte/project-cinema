@@ -19,11 +19,15 @@ import {
 import { Link as ReachLink } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { fieldType } from '../Auth/authTypes';
-import { onSubmitHandler } from '../../Pages/SignUpPage';
-import { initialValues } from '../../Pages/SignUpPage';
+import { fieldType, initialTypes } from '../Auth/authTypes';
 
-export function SignUpCard() {
+export function SignUpCard({
+  onSubmitHandler,
+  initialValues,
+}: {
+  onSubmitHandler: (values: initialTypes, actions: any) => Promise<void>;
+  initialValues: initialTypes;
+}) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
