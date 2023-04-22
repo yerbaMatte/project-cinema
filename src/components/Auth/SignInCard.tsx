@@ -18,6 +18,8 @@ import { useState } from 'react';
 import { fieldType } from '../../components/Auth/authTypes';
 import { initialTypes, loginCred } from '../../components/Auth/authTypes';
 
+// default browser error message
+
 export default function SignUpCard({
   initialValues,
   loginHandler,
@@ -48,17 +50,17 @@ export default function SignUpCard({
             {/* ----------------- */}
             {({ isSubmitting }) => (
               <Form>
-                <Field name="email">
+                <Field name='email'>
                   {({ field }: fieldType) => (
-                    <FormControl id="email">
+                    <FormControl id='email'>
                       <FormLabel>Email address</FormLabel>
-                      <Input {...field} type="email" />
+                      <Input {...field} type='email' />
                     </FormControl>
                   )}
                 </Field>
-                <Field name="password">
+                <Field name='password'>
                   {({ field }: fieldType) => (
-                    <FormControl id="password">
+                    <FormControl id='password'>
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -81,10 +83,10 @@ export default function SignUpCard({
                 </Field>
                 <Stack spacing={10} pt={2}>
                   <Button
-                    type="submit"
+                    type='submit'
                     isLoading={isSubmitting}
-                    loadingText="Submitting"
-                    size="lg"
+                    loadingText='Submitting'
+                    size='lg'
                     bg={'blue.400'}
                     color={'white'}
                     _hover={{
