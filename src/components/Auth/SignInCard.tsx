@@ -2,12 +2,10 @@ import { Formik, Form, Field } from 'formik';
 // Chakra UI
 import {
   Flex,
-  Box,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
-  HStack,
   InputRightElement,
   Stack,
   Button,
@@ -15,51 +13,17 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { initialValues } from '../../Pages/SignInPage';
+import { onSubmitHandler } from '../../Pages/SignInPage';
+import { fieldType } from '../../components/Auth/authTypes';
 
 export default function SignUpCard() {
   const [showPassword, setShowPassword] = useState(false);
 
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-  };
-
-  type Values = typeof initialValues;
-
-  type fieldType = {
-    field: {
-      name: string;
-      value: string;
-      onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-      onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
-    };
-  };
-
-  const loginHandler = async () => {
-    const { user } = await signInWithEmailAndPassword(
-      auth,
-      'mime@gmail.com',
-      '123456789'
-    );
-    console.log(user);
-
-    await updateProfile(user, {
-      displayName: 'Majlo',
-    });
-
-    console.log(user.displayName);
-  };
-
   return (
     <>
-      <button onClick={loginHandler}>LOGIN</button>
       <Flex
         minH={'100vh'}
         align={'center'}
@@ -74,31 +38,20 @@ export default function SignUpCard() {
               welcome back!
             </Text>
           </Stack>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={({ firstName, lastName, email, password }, actions) => {
-              signInWithEmailAndPassword(auth, email, password)
-                .then((userCred) => {
-                  console.log(userCred);
-                })
-                .catch((err) => console.log(err));
-
-              actions.setSubmitting(false);
-            }}
-          >
+          <Formik initialValues={initialValues} onSubmit={onSubmitHandler}>
             {({ isSubmitting }) => (
               <Form>
-                <Field name='email'>
+                <Field name="email">
                   {({ field }: fieldType) => (
-                    <FormControl id='email'>
+                    <FormControl id="email">
                       <FormLabel>Email address</FormLabel>
-                      <Input {...field} type='email' />
+                      <Input {...field} type="email" />
                     </FormControl>
                   )}
                 </Field>
-                <Field name='password'>
+                <Field name="password">
                   {({ field }: fieldType) => (
-                    <FormControl id='password'>
+                    <FormControl id="password">
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -121,10 +74,10 @@ export default function SignUpCard() {
                 </Field>
                 <Stack spacing={10} pt={2}>
                   <Button
-                    type='submit'
+                    type="submit"
                     isLoading={isSubmitting}
-                    loadingText='Submitting'
-                    size='lg'
+                    loadingText="Submitting"
+                    size="lg"
                     bg={'blue.400'}
                     color={'white'}
                     _hover={{

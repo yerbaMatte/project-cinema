@@ -19,27 +19,12 @@ import {
 import { Link as ReachLink } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { fieldType } from '../Auth/authTypes';
+import { onSubmitHandler } from '../../Pages/SignUpPage';
+import { initialValues } from '../../Pages/SignUpPage';
 
-export default function SignInCard() {
+export function SignUpCard() {
   const [showPassword, setShowPassword] = useState(false);
-
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-  };
-
-  type fieldType = {
-    field: {
-      name: string;
-      value: string;
-      onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-      onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
-    };
-  };
 
   return (
     <>
@@ -57,54 +42,43 @@ export default function SignInCard() {
               to enjoy all of our cool features 🎥
             </Text>
           </Stack>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={({ firstName, lastName, email, password }, actions) => {
-              createUserWithEmailAndPassword(auth, email, password)
-                .then((userCred) => {
-                  console.log(userCred);
-                })
-                .catch((err) => console.log(err));
-
-              actions.setSubmitting(false);
-            }}
-          >
+          <Formik initialValues={initialValues} onSubmit={onSubmitHandler}>
             {({ isSubmitting }) => (
               <Form>
                 <HStack>
                   <Box>
-                    <Field name='firstName'>
+                    <Field name="firstName">
                       {({ field }: fieldType) => (
                         // {name: 'password', value: '', onChange: ƒ, onBlur: ƒ}
-                        <FormControl id='firstName' isRequired>
+                        <FormControl id="firstName" isRequired>
                           <FormLabel>First Name</FormLabel>
-                          <Input {...field} type='text' />
+                          <Input {...field} type="text" />
                         </FormControl>
                       )}
                     </Field>
                   </Box>
                   <Box>
-                    <Field name='lastName'>
+                    <Field name="lastName">
                       {({ field }: fieldType) => (
-                        <FormControl id='lastName' isRequired>
+                        <FormControl id="lastName" isRequired>
                           <FormLabel>Last Name</FormLabel>
-                          <Input {...field} type='text' />
+                          <Input {...field} type="text" />
                         </FormControl>
                       )}
                     </Field>
                   </Box>
                 </HStack>
-                <Field name='email'>
+                <Field name="email">
                   {({ field }: fieldType) => (
-                    <FormControl id='email' isRequired>
+                    <FormControl id="email" isRequired>
                       <FormLabel>Email address</FormLabel>
-                      <Input {...field} type='email' />
+                      <Input {...field} type="email" />
                     </FormControl>
                   )}
                 </Field>
-                <Field name='password'>
+                <Field name="password">
                   {({ field }: fieldType) => (
-                    <FormControl id='password' isRequired>
+                    <FormControl id="password" isRequired>
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -127,10 +101,10 @@ export default function SignInCard() {
                 </Field>
                 <Stack spacing={10} pt={2}>
                   <Button
-                    type='submit'
+                    type="submit"
                     isLoading={isSubmitting}
-                    loadingText='Submitting'
-                    size='lg'
+                    loadingText="Submitting"
+                    size="lg"
                     bg={'blue.400'}
                     color={'white'}
                     _hover={{
@@ -143,7 +117,7 @@ export default function SignInCard() {
                 <Stack pt={6}>
                   <Text align={'center'}>
                     Already a user?{' '}
-                    <Link color='#185bc7' as={ReachLink} to='/signin'>
+                    <Link color="#185bc7" as={ReachLink} to="/signin">
                       Login
                     </Link>
                   </Text>
