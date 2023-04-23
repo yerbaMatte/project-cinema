@@ -5,6 +5,15 @@ export type fieldType = {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
   };
+  form: {
+    errors: Record<string, string>;
+    touched: Record<string, boolean>;
+    initialValues: Record<string, string>;
+    onSubmit: (values: Record<string, string>) => void;
+    validate: (
+      values: Record<string, string>
+    ) => Record<string, string> | Promise<Record<string, string>>;
+  };
 };
 
 export type FormikActions = {

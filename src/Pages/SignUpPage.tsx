@@ -2,9 +2,10 @@ import { SignUpCard } from '../components/Auth/SignUpCard';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { initialTypes, FormikActions } from '../components/Auth/authTypes';
+import { validationSchema } from '../components/Auth/validationSchema';
 
 export const SignUpPage = () => {
-  const initialValues = {
+  const initialValues: initialTypes = {
     firstName: '',
     lastName: '',
     email: '',
@@ -32,6 +33,7 @@ export const SignUpPage = () => {
     <SignUpCard
       onSubmitHandler={onSubmitHandler}
       initialValues={initialValues}
+      validationSchema={validationSchema}
     />
   );
 };

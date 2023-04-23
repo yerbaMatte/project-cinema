@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 // Chakra UI
 import {
   Link,
@@ -15,18 +15,23 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  FormErrorMessage,
+  FormHelperText,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, initialTypes } from '../Auth/authTypes';
+import Yup from 'yup';
 
 export function SignUpCard({
   onSubmitHandler,
   initialValues,
+  validationSchema,
 }: {
   onSubmitHandler: (values: initialTypes, actions: any) => Promise<void>;
   initialValues: initialTypes;
+  validationSchema: Yup.ObjectSchema<initialTypes>;
 }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,7 +43,6 @@ export function SignUpCard({
         justify={'center'}
         bg={useColorModeValue('gray.50', 'gray.800')}
       >
-        {' '}
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'}>Sign Up</Heading>
@@ -46,13 +50,17 @@ export function SignUpCard({
               to enjoy all of our cool features 🎥
             </Text>
           </Stack>
-          <Formik initialValues={initialValues} onSubmit={onSubmitHandler}>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmitHandler}
+            validationSchema={validationSchema}
+          >
             {({ isSubmitting }) => (
-              <Form>
+              <Form noValidate>
                 <HStack>
                   <Box>
                     <Field name="firstName">
-                      {({ field }: fieldType) => (
+                      {({ field, form }: fieldType) => (
                         // {name: 'password', value: '', onChange: ƒ, onBlur: ƒ}
                         <FormControl id="firstName" isRequired>
                           <FormLabel>First Name</FormLabel>
@@ -63,7 +71,7 @@ export function SignUpCard({
                   </Box>
                   <Box>
                     <Field name="lastName">
-                      {({ field }: fieldType) => (
+                      {({ field, form }: fieldType) => (
                         <FormControl id="lastName" isRequired>
                           <FormLabel>Last Name</FormLabel>
                           <Input {...field} type="text" />

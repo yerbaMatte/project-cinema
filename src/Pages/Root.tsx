@@ -7,7 +7,7 @@ export const Root = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   return (
     <>
-      <MainNavigation loginStatus={isLoggedIn} />
+      <MainNavigation isLoggedIn={isLoggedIn} />
       <main>
         <Outlet />
       </main>

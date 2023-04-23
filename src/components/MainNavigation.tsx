@@ -23,11 +23,13 @@ import {
 } from '@chakra-ui/icons';
 
 import { Link as RouterLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 export default function MainNavigation({
-  loginStatus,
+  isLoggedIn,
 }: {
-  loginStatus: boolean;
+  isLoggedIn: boolean;
 }) {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -80,7 +82,7 @@ export default function MainNavigation({
           direction={'row'}
           spacing={6}
         >
-          {!loginStatus && (
+          {!isLoggedIn && (
             <>
               <RouterLink to="signin">
                 <Button fontSize={'sm'} fontWeight={400} variant={'outline'}>
