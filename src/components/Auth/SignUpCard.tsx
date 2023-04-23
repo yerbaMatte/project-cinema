@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 // Chakra UI
 import {
   Link,
@@ -15,8 +15,6 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  FormErrorMessage,
-  FormHelperText,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
@@ -65,66 +63,12 @@ export function SignUpCard({
                       inputName="firstName"
                       inputLabel="First Name"
                     />
-                    {/* <Field name="firstName">
-                      {({ field, form }: fieldType) => (
-                        <FormControl
-                          id="firstName"
-                          isRequired
-                          isInvalid={
-                            form.errors.firstName && form.touched.firstName
-                          }
-                        >
-                          <FormLabel>First Name</FormLabel>
-                          <Input {...field} type="text" />
-                          <DisplayError
-                            invalidMessage={form.errors.firstName}
-                            isInvalid={
-                              form.errors.firstName && form.touched.firstName
-                            }
-                          />
-                        </FormControl>
-                      )}
-                    </Field> */}
                   </Box>
                   <Box>
-                    <Field name="lastName">
-                      {({ field, form }: fieldType) => (
-                        <FormControl
-                          id="lastName"
-                          isRequired
-                          isInvalid={
-                            form.errors.lastName && form.touched.lastName
-                          }
-                        >
-                          <FormLabel>Last Name</FormLabel>
-                          <Input {...field} type="text" />
-                          <DisplayError
-                            invalidMessage={form.errors.lastName}
-                            isInvalid={
-                              form.errors.lastName && form.touched.lastName
-                            }
-                          />
-                        </FormControl>
-                      )}
-                    </Field>
+                    <CustomField inputName="lastName" inputLabel="Last Name" />
                   </Box>
                 </HStack>
-                <Field name="email">
-                  {({ field, form }: fieldType) => (
-                    <FormControl
-                      id="email"
-                      isRequired
-                      isInvalid={form.errors.email && form.touched.email}
-                    >
-                      <FormLabel>Email address</FormLabel>
-                      <Input {...field} type="email" />
-                      <DisplayError
-                        invalidMessage={form.errors.email}
-                        isInvalid={form.errors.email && form.touched.email}
-                      />
-                    </FormControl>
-                  )}
-                </Field>
+                <CustomField inputName="email" inputLabel="Email address" />
                 <Field name="password">
                   {({ field, form }: fieldType) => (
                     <FormControl
