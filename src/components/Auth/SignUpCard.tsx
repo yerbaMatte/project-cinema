@@ -23,6 +23,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, initialTypes } from '../Auth/authTypes';
 import { DisplayError } from './DisplayError';
+import { CustomField } from './CustomField';
 import Yup from 'yup';
 
 export function SignUpCard({
@@ -60,7 +61,11 @@ export function SignUpCard({
               <Form noValidate>
                 <HStack>
                   <Box>
-                    <Field name="firstName">
+                    <CustomField
+                      inputName="firstName"
+                      inputLabel="First Name"
+                    />
+                    {/* <Field name="firstName">
                       {({ field, form }: fieldType) => (
                         <FormControl
                           id="firstName"
@@ -79,7 +84,7 @@ export function SignUpCard({
                           />
                         </FormControl>
                       )}
-                    </Field>
+                    </Field> */}
                   </Box>
                   <Box>
                     <Field name="lastName">
