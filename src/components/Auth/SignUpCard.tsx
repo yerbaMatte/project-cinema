@@ -146,7 +146,9 @@ export function SignUpCard({
                       </InputGroup>
                       <DisplayError
                         invalidMessage={form.errors.password}
-                        isInvalid={form.errors.email && form.touched.password}
+                        isInvalid={
+                          form.errors.password && form.touched.password
+                        }
                       />
                     </FormControl>
                   )}
