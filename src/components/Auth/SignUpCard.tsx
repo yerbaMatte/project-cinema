@@ -22,6 +22,7 @@ import { Link as ReachLink } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, initialTypes } from '../Auth/authTypes';
+import { DisplayError } from './DisplayError';
 import Yup from 'yup';
 
 export function SignUpCard({
@@ -61,10 +62,21 @@ export function SignUpCard({
                   <Box>
                     <Field name="firstName">
                       {({ field, form }: fieldType) => (
-                        // {name: 'password', value: '', onChange: ƒ, onBlur: ƒ}
-                        <FormControl id="firstName" isRequired>
+                        <FormControl
+                          id="firstName"
+                          isRequired
+                          isInvalid={
+                            form.errors.firstName && form.touched.firstName
+                          }
+                        >
                           <FormLabel>First Name</FormLabel>
                           <Input {...field} type="text" />
+                          <DisplayError
+                            invalidMessage={form.errors.firstName}
+                            isInvalid={
+                              form.errors.firstName && form.touched.firstName
+                            }
+                          />
                         </FormControl>
                       )}
                     </Field>
@@ -72,25 +84,49 @@ export function SignUpCard({
                   <Box>
                     <Field name="lastName">
                       {({ field, form }: fieldType) => (
-                        <FormControl id="lastName" isRequired>
+                        <FormControl
+                          id="lastName"
+                          isRequired
+                          isInvalid={
+                            form.errors.lastName && form.touched.lastName
+                          }
+                        >
                           <FormLabel>Last Name</FormLabel>
                           <Input {...field} type="text" />
+                          <DisplayError
+                            invalidMessage={form.errors.lastName}
+                            isInvalid={
+                              form.errors.lastName && form.touched.lastName
+                            }
+                          />
                         </FormControl>
                       )}
                     </Field>
                   </Box>
                 </HStack>
                 <Field name="email">
-                  {({ field }: fieldType) => (
-                    <FormControl id="email" isRequired>
+                  {({ field, form }: fieldType) => (
+                    <FormControl
+                      id="email"
+                      isRequired
+                      isInvalid={form.errors.email && form.touched.email}
+                    >
                       <FormLabel>Email address</FormLabel>
                       <Input {...field} type="email" />
+                      <DisplayError
+                        invalidMessage={form.errors.email}
+                        isInvalid={form.errors.email && form.touched.email}
+                      />
                     </FormControl>
                   )}
                 </Field>
                 <Field name="password">
-                  {({ field }: fieldType) => (
-                    <FormControl id="password" isRequired>
+                  {({ field, form }: fieldType) => (
+                    <FormControl
+                      id="password"
+                      isRequired
+                      isInvalid={form.errors.password && form.touched.password}
+                    >
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -108,6 +144,10 @@ export function SignUpCard({
                           </Button>
                         </InputRightElement>
                       </InputGroup>
+                      <DisplayError
+                        invalidMessage={form.errors.password}
+                        isInvalid={form.errors.email && form.touched.password}
+                      />
                     </FormControl>
                   )}
                 </Field>

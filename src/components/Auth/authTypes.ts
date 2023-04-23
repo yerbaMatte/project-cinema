@@ -6,7 +6,7 @@ export type fieldType = {
     onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
   };
   form: {
-    errors: Record<string, string>;
+    errors: Record<string, boolean>;
     touched: Record<string, boolean>;
     initialValues: Record<string, string>;
     onSubmit: (values: Record<string, string>) => void;
