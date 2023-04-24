@@ -1,15 +1,10 @@
-import SignInCard from '../components/Auth/SignInCard';
-import {
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from 'firebase/auth';
+import SignInCard from '../Components/Auth/SignInCard';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
-import firebase from 'firebase/app';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store/store';
-import { signActions } from '../store/auth-slice';
-import { initialTypes, loginCred } from '../components/Auth/authTypes';
+import { RootState } from '../Store/store';
+import { signActions } from '../Store/auth-slice';
+import { initialTypes, loginCred } from '../Components/Auth/authTypes';
 import { User } from 'firebase/auth';
 import { useEffect } from 'react';
 // test data

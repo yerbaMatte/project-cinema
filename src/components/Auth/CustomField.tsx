@@ -1,7 +1,7 @@
 import { Field } from 'formik';
 import { FormControl, FormLabel, Input } from '@chakra-ui/react';
-import { fieldType } from './authTypes';
-import { DisplayError } from './DisplayError';
+import { fieldType } from '../Auth/authTypes';
+import { DisplayError } from '../Auth/DisplayError';
 
 export const CustomField = ({
   inputName,

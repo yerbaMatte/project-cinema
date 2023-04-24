@@ -23,8 +23,6 @@ import {
 } from '@chakra-ui/icons';
 
 import { Link as RouterLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
 
 export default function MainNavigation({
   isLoggedIn,
@@ -61,7 +59,7 @@ export default function MainNavigation({
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <RouterLink to="/">
+          <RouterLink to='/'>
             <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
@@ -84,12 +82,12 @@ export default function MainNavigation({
         >
           {!isLoggedIn && (
             <>
-              <RouterLink to="signin">
+              <RouterLink to='signin'>
                 <Button fontSize={'sm'} fontWeight={400} variant={'outline'}>
                   Sign In
                 </Button>
               </RouterLink>
-              <RouterLink to="signup">
+              <RouterLink to='signup'>
                 <Button
                   display={{ base: 'none', md: 'inline-flex' }}
                   fontSize={'sm'}

@@ -1,8 +1,8 @@
-import { SignUpCard } from '../components/Auth/SignUpCard';
+import { SignUpCard } from '../Components/Auth/SignUpCard';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase';
-import { initialTypes, FormikActions } from '../components/Auth/authTypes';
-import { validationSchema } from '../components/Auth/validationSchema';
+import { initialTypes, FormikActions } from '../Components/Auth/authTypes';
+import { validationSchema } from '../Components/Auth/validationSchema';
 
 export const SignUpPage = () => {
   const initialValues: initialTypes = {
