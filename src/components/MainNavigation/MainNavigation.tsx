@@ -3,7 +3,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -21,8 +20,9 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-
 import { Link as RouterLink } from 'react-router-dom';
+import { LoggedOutNav } from './LoggedOut/LoggedOutNav';
+import { LoggedInNav } from './LoggedIn/LoggedInNav';
 
 export default function MainNavigation({
   isLoggedIn,
@@ -75,34 +75,13 @@ export default function MainNavigation({
         </Flex>
 
         <Stack
-          flex={{ base: 1, md: 0 }}
+          flex={{ base: 0, md: 1 }}
           justify={'flex-end'}
           direction={'row'}
           spacing={6}
+          align={'center'}
         >
-          {!isLoggedIn && (
-            <>
-              <RouterLink to='signin'>
-                <Button fontSize={'sm'} fontWeight={400} variant={'outline'}>
-                  Sign In
-                </Button>
-              </RouterLink>
-              <RouterLink to='signup'>
-                <Button
-                  display={{ base: 'none', md: 'inline-flex' }}
-                  fontSize={'sm'}
-                  fontWeight={600}
-                  color={'white'}
-                  bg={'blue.400'}
-                  _hover={{
-                    bg: 'blue.300',
-                  }}
-                >
-                  Sign Up
-                </Button>
-              </RouterLink>
-            </>
-          )}
+          {isLoggedIn ? <LoggedOutNav /> : <LoggedInNav />}
         </Stack>
       </Flex>
 

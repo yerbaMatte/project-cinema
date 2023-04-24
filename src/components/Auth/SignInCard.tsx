@@ -17,8 +17,6 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, loginCred } from '../../Components/Auth/authTypes';
 
-// default browser error message
-
 export default function SignUpCard({
   initialValues,
   loginHandler,
@@ -46,7 +44,6 @@ export default function SignUpCard({
           </Stack>
           {/*  */}
           <Formik initialValues={initialValues} onSubmit={loginHandler}>
-            {/* ----------------- */}
             {({ isSubmitting }) => (
               <Form>
                 <Field name='email'>
