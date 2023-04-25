@@ -1,7 +1,6 @@
 import { SignUpCard } from '../Components/Auth/SignUpCard';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../firebase';
-import { initialTypes, FormikActions } from '../Components/Auth/authTypes';
+import { onSubmitHandler } from '../Services/firebase';
+import { initialTypes } from '../types/types';
 import { validationSchema } from '../Components/Auth/validationSchema';
 
 export const SignUpPage = () => {
@@ -11,23 +10,6 @@ export const SignUpPage = () => {
     email: '',
     password: '',
   };
-
-  async function onSubmitHandler(
-    { firstName, lastName, email, password }: initialTypes,
-    actions: FormikActions
-  ) {
-    const { user } = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-    await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-
-    console.log(user);
-
-    actions.setSubmitting(false);
-  }
 
   //TODO: add auto lgged in after singin up
 
@@ -42,4 +24,5 @@ export const SignUpPage = () => {
 
 // JEST test
 
-export default PrivateRoute(SignUpPage);
+// export default PrivateRoute(SignUpPage);
+//FIXME:
