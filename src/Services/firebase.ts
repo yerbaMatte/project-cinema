@@ -8,6 +8,7 @@ import { initialTypes, FormikActions, loginCred } from '../types/types';
 import { auth } from '../../firebase';
 import { useAppDispatch } from '../Hooks/hooks';
 import { signActions } from '../Store/auth-slice';
+import { AppDispatch } from '../Store/store';
 
 export const onSubmitHandler = async (
   { firstName, lastName, email, password }: initialTypes,
@@ -20,11 +21,18 @@ export const onSubmitHandler = async (
   actions.setSubmitting(false);
 };
 
-export const loginHandler = async ({ email, password }: loginCred) => {
-  const dispatch = useAppDispatch();
+export const loginUser = async ({ email, password }: loginCred) => {
+  debugger;
   const user = await signInWithEmailAndPassword(auth, email, password);
-  if (user) {
-    dispatch(signActions.setLoggedStatus(auth.currentUser?.displayName));
+  // if (user) {
+  //   dispatch(signActions.setLoggedStatus(auth.currentUser?.displayName));
+  // }
+
+  try {
+    debugger;
+    return user;
+  } catch (error) {
+    throw Error('BOOM');
   }
 };
 

@@ -1,7 +1,7 @@
 import { SignUpCard } from '../Components/Auth/SignUpCard';
 import { onSubmitHandler } from '../Services/firebase';
 import { initialTypes } from '../types/types';
-import { validationSchema } from '../Components/Auth/validationSchema';
+import { validationSchema } from '../Services/validationSchema';
 
 export const SignUpPage = () => {
   const initialValues: initialTypes = {
@@ -25,4 +25,3 @@ export const SignUpPage = () => {
 // JEST test
 
 // export default PrivateRoute(SignUpPage);
-//FIXME:

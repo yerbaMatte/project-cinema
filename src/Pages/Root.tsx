@@ -12,6 +12,7 @@ export const Root = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   useEffect(() => {
+    signOut(auth);
     const user = onAuthStateChanged(auth, (user: User | null) => {
       if (user) {
         dispatch(signActions.setLoggedStatus(auth.currentUser?.displayName));
@@ -30,17 +31,15 @@ export const Root = () => {
   );
 };
 
-//TODO:
+// interface Props {
+//   Component: JSX.Element;
+// }
 
-interface Props {
-  Component: JSX.Element;
-}
+// const PrivateRoute = (Component: JSX.Element) => {
+//   //logic check if the user iSloggedin
 
-const PrivateRoute = (Component: JSX.Element) => {
-  //logic check if the user iSloggedin
-
-  return isLoggedIn ? Component : ComponentToRedirect;
-};
+//   return isLoggedIn ? Component : ComponentToRedirect;
+// };
 
 // auth higher order component HOC
 //TODO:

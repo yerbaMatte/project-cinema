@@ -1,20 +1,28 @@
 import SignInCard from '../Components/Auth/SignInCard';
-import { loginCred } from '../types/types';
-import { loginHandler } from '../Services/firebase';
+import { LogCred } from '../types/types';
+import { useAppDispatch } from '../Hooks/hooks';
+import { loginUser } from '../Services/firebase';
+import { signActions } from '../Store/auth-slice';
 
 // test data
 // test@gmail.com
 // 123456789
 
 export const SignInPage = () => {
-  const initialValues: loginCred = {
+  const dispatch = useAppDispatch();
+  const initialValues: LogCred = {
     email: '',
     password: '',
   };
 
+  const loginHandler = async (loginCredentials: LogCred) => {
+    const user = await loginUser(loginCredentials);
+    dispatch(signActions.setLoggedStatus(user));
+  };
+
   return (
     <>
-      <SignInCard initialValues={initialValues} loginHandler={loginHandler} />
+      <SignInCard initialValues={initialValues} onLogin={loginHandler} />
     </>
   );
 };

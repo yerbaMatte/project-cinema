@@ -15,15 +15,14 @@ import {
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { fieldType, loginCred } from '../../types/types';
+import { fieldType, LogCred } from '../../types/types';
 
-export default function SignUpCard({
-  initialValues,
-  loginHandler,
-}: {
-  initialValues: loginCred;
-  loginHandler: (values: loginCred, actions: any) => Promise<void>;
-}) {
+interface Props {
+  initialValues: LogCred;
+  onLogin: (values: LogCred) => Promise<void>;
+}
+
+export default function SignUpCard({ initialValues, onLogin }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -43,7 +42,7 @@ export default function SignUpCard({
             </Text>
           </Stack>
           {/*  */}
-          <Formik initialValues={initialValues} onSubmit={loginHandler}>
+          <Formik initialValues={initialValues} onSubmit={onLogin}>
             {({ isSubmitting }) => (
               <Form>
                 <Field name="email">

@@ -36,8 +36,10 @@ export interface initialTypes {
   password: string;
 }
 
-export type loginCred = Omit<initialTypes, 'firstName' | 'lastName'>;
+export type LogCred = Omit<initialTypes, 'firstName' | 'lastName'>;
 
 export interface signOutHandler {
   signOutHandler: () => Promise<void>;
 }
+
+//TODO: split into chareactestic
