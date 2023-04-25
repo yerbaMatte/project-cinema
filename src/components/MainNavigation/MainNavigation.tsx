@@ -81,7 +81,7 @@ export default function MainNavigation({
           spacing={6}
           align={'center'}
         >
-          {isLoggedIn ? <LoggedOutNav /> : <LoggedInNav />}
+          {isLoggedIn ? <LoggedInNav /> : <LoggedOutNav />}
         </Stack>
       </Flex>
 

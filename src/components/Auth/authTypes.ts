@@ -37,3 +37,5 @@ export interface initialTypes {
 }
 
 export type loginCred = Omit<initialTypes, 'firstName' | 'lastName'>;
+
+//TODO: all types in the 'types' folder

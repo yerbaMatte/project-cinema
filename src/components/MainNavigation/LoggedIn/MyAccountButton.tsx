@@ -3,7 +3,7 @@ import { Button } from '@chakra-ui/react';
 
 export const MyAccountButton = () => {
   return (
-    <RouterLink to='signup'>
+    <RouterLink to='/'>
       <Button
         display={{ base: 'none', md: 'inline-flex' }}
         fontSize={'sm'}

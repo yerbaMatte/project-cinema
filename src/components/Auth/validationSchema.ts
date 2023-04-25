@@ -8,3 +8,6 @@ export const validationSchema = object().shape({
     .required('Password is required')
     .min(6, 'Password must be at least 6 characters'),
 });
+
+//
+//TODO: put it inside /services folder

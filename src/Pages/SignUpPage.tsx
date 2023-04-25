@@ -29,6 +29,8 @@ export const SignUpPage = () => {
     actions.setSubmitting(false);
   }
 
+  //TODO: add auto lgged in after singin up
+
   return (
     <SignUpCard
       onSubmitHandler={onSubmitHandler}
@@ -37,3 +39,7 @@ export const SignUpPage = () => {
     />
   );
 };
+
+// JEST test
+
+export default PrivateRoute(SignUpPage);
