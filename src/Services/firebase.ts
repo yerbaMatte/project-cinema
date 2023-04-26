@@ -4,11 +4,10 @@ import {
   updateProfile,
   signOut,
 } from 'firebase/auth';
-import { initialTypes, FormikActions, loginCred } from '../types/types';
+import { initialTypes, FormikActions, LogCred } from '../types/types';
 import { auth } from '../../firebase';
 import { useAppDispatch } from '../Hooks/hooks';
 import { signActions } from '../Store/auth-slice';
-import { AppDispatch } from '../Store/store';
 
 export const onSubmitHandler = async (
   { firstName, lastName, email, password }: initialTypes,
@@ -21,15 +20,14 @@ export const onSubmitHandler = async (
   actions.setSubmitting(false);
 };
 
-export const loginUser = async ({ email, password }: loginCred) => {
-  debugger;
-  const user = await signInWithEmailAndPassword(auth, email, password);
+export const loginUser = async ({ email, password }: LogCred) => {
   // if (user) {
   //   dispatch(signActions.setLoggedStatus(auth.currentUser?.displayName));
   // }
 
   try {
-    debugger;
+    const user = await signInWithEmailAndPassword(auth, email, password);
+    console.log(user.user.displayName);
     return user;
   } catch (error) {
     throw Error('BOOM');

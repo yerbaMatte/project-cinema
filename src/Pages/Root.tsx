@@ -5,19 +5,19 @@ import { RootState } from '../Store/store';
 import { User, onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { signActions } from '../Store/auth-slice';
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export const Root = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   useEffect(() => {
-    signOut(auth);
     const user = onAuthStateChanged(auth, (user: User | null) => {
       if (user) {
         dispatch(signActions.setLoggedStatus(auth.currentUser?.displayName));
       }
     });
+    console.log(user);
     return user;
   }, []);
 
