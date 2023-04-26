@@ -21,21 +21,11 @@ export const onSubmitHandler = async (
 };
 
 export const loginUser = async ({ email, password }: LogCred) => {
-  // if (user) {
-  //   dispatch(signActions.setLoggedStatus(auth.currentUser?.displayName));
-  // }
-
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
-    console.log(user.user.displayName);
+
     return user;
   } catch (error) {
     throw Error('BOOM');
   }
-};
-
-export const signOutHandler = async () => {
-  const dispatch = useAppDispatch();
-  dispatch(signActions.setLoggedStatus(null));
-  await signOut(auth);
 };

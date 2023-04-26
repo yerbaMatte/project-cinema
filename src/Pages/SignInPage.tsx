@@ -1,6 +1,6 @@
 import SignInCard from '../Components/Auth/SignInCard';
 import { LogCred } from '../types/types';
-import { useAppDispatch } from '../Hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../Hooks/hooks';
 import { loginUser } from '../Services/firebase';
 import { signActions } from '../Store/auth-slice';
 
@@ -17,7 +17,7 @@ export const SignInPage = () => {
 
   const loginHandler = async (loginCredentials: LogCred) => {
     const user = await loginUser(loginCredentials);
-    dispatch(signActions.setLoggedStatus(user));
+    dispatch(signActions.setLoggedStatus(user.user.displayName));
   };
 
   return (

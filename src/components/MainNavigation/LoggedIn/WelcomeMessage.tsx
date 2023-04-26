@@ -1,8 +1,7 @@
 import { Text } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../Store/store';
+import { useAppSelector } from '../../../Hooks/hooks';
 
 export function WelcomeMessage() {
-  const userName = useSelector((state: RootState) => state.auth.name);
+  const userName = useAppSelector((state) => state.auth.name);
   return <Text>Welcome back, {userName}!</Text>;
 }
