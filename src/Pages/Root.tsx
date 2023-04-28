@@ -14,13 +14,12 @@ export const Root = () => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       if (user) {
         dispatch(signActions.setLoggedStatus(user.displayName));
-        console.log('user is logged in');
-      } else {
-        console.log('useEffect user is logged out');
       }
     });
     return () => unsubscribe();
   }, []);
+
+  //:TODO: customHook - PrivateComponent
 
   return (
     <>
@@ -31,16 +30,3 @@ export const Root = () => {
     </>
   );
 };
-
-// interface Props {
-//   Component: JSX.Element;
-// }
-
-// const PrivateRoute = (Component: JSX.Element) => {
-//   //logic check if the user iSloggedin
-
-//   return isLoggedIn ? Component : ComponentToRedirect;
-// };
-
-// auth higher order component HOC
-//TODO:
