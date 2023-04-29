@@ -12,18 +12,20 @@ export function App() {
         { index: true, element: <h1>Main Page</h1> },
         { path: 'signin', element: <SignInPage /> },
         { path: 'signup', element: <SignUpPage /> },
-        { path: 'home', element: <HOME /> },
+        // { path: 'home', element: <HOME /> },
       ],
     },
   ]);
   return <RouterProvider router={router} />;
 }
 
-const Home = () => {
-  return <div>HOME</div>;
-};
+export default App;
 
-export default PrivateRoute(Home);
+// const Home = () => {
+//   return <div>HOME</div>;
+// };
+
+// export default PrivateRoute(Home);
 
 //1. Custom hook for auth
 //2. PrivateRoute Component (HOC)
