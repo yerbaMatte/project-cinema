@@ -21,14 +21,8 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
-import { LoggedOutNav } from './LoggedOut/LoggedOutNav';
-import { LoggedInNav } from './LoggedIn/LoggedInNav';
 
-export default function MainNavigation({
-  isLoggedIn,
-}: {
-  isLoggedIn: boolean;
-}) {
+export default function MainNavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -81,7 +75,7 @@ export default function MainNavigation({
           spacing={6}
           align={'center'}
         >
-          {isLoggedIn ? <LoggedInNav /> : <LoggedOutNav />}
+          <Text>Empty</Text>
         </Stack>
       </Flex>
 

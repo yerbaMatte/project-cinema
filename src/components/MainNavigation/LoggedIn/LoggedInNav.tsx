@@ -7,18 +7,11 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../../firebase';
 
 export const LoggedInNav = () => {
-  const dispatch = useAppDispatch();
-
-  const signOutHandler = async () => {
-    dispatch(signActions.setLoggedStatus(null));
-    await signOut(auth);
-  };
-
   return (
     <>
       <WelcomeMessage />
       <MyAccountButton />
-      <SignOutButton signOutHandler={signOutHandler} />
+      <SignOutButton />
     </>
   );
 };

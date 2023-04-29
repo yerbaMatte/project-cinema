@@ -1,10 +1,25 @@
-import { User, onAuthStateChanged } from 'firebase/auth';
-import { useAppSelector, useAppDispatch } from '../Hooks/hooks';
-import { signActions } from '../Store/auth-slice';
 import { auth } from '../../firebase';
+import { useAppSelector } from './hooks';
+import { useEffect } from 'react';
+import { useAppDispatch } from './hooks';
+import { signActions } from '../Store/auth-slice';
 
-const useAuth = async () => {
-  const { isLoggedIn, isInitializing } = useAppSelector((state) => state.auth);
+export const useAuth = () => {
+  const dispatch = useAppDispatch();
+  const { userAcc, isInit } = useAppSelector((state) => state.auth);
 
-  const unsubscribe = await onAuthStateChanged(auth, (user: User | null) => {});
+  useEffect(() => {
+    const subscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        const { displayName, email } = user;
+        dispatch(signActions.setUser({ displayName, email }));
+      } else {
+        console.log('there is no user');
+      }
+    });
+
+    return () => subscribe();
+  }, []);
+
+  return { userAcc, isInit };
 };

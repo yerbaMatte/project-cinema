@@ -21,12 +21,6 @@ export function App() {
 
 export default App;
 
-// const Home = () => {
-//   return <div>HOME</div>;
-// };
-
-// export default PrivateRoute(Home);
-
 //1. Custom hook for auth
 //2. PrivateRoute Component (HOC)
 //3.

@@ -19,10 +19,9 @@ import { fieldType, LogCred } from '../../types/types';
 
 interface Props {
   initialValues: LogCred;
-  onLogin: (values: LogCred) => Promise<void>;
 }
 
-export default function SignUpCard({ initialValues, onLogin }: Props) {
+export default function SignUpCard({ initialValues }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -42,20 +41,20 @@ export default function SignUpCard({ initialValues, onLogin }: Props) {
             </Text>
           </Stack>
           {/*  */}
-          <Formik initialValues={initialValues} onSubmit={onLogin}>
+          <Formik initialValues={initialValues} onSubmit={() => {}}>
             {({ isSubmitting }) => (
               <Form>
-                <Field name="email">
+                <Field name='email'>
                   {({ field }: fieldType) => (
-                    <FormControl id="email">
+                    <FormControl id='email'>
                       <FormLabel>Email address</FormLabel>
-                      <Input {...field} type="email" />
+                      <Input {...field} type='email' />
                     </FormControl>
                   )}
                 </Field>
-                <Field name="password">
+                <Field name='password'>
                   {({ field }: fieldType) => (
-                    <FormControl id="password">
+                    <FormControl id='password'>
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -78,10 +77,10 @@ export default function SignUpCard({ initialValues, onLogin }: Props) {
                 </Field>
                 <Stack spacing={10} pt={2}>
                   <Button
-                    type="submit"
+                    type='submit'
                     isLoading={isSubmitting}
-                    loadingText="Submitting"
-                    size="lg"
+                    loadingText='Submitting'
+                    size='lg'
                     bg={'blue.400'}
                     color={'white'}
                     _hover={{

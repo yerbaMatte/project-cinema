@@ -1,19 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { User } from 'firebase/auth';
 
-const initialState = {
-  user: null,
-  name: '',
-  isInitializing: true,
+interface UserAccProps {
+  name: string | null;
+  email: string | null;
+}
+
+const initialState: {
+  userAcc: UserAccProps;
+  isInit: Boolean;
+} = {
+  userAcc: {
+    name: null,
+    email: null,
+  },
+  isInit: true,
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
   reducers: {
-    setLoggedIn(state, actions) {
-      state.user = state.name = actions.payload;
-
-      state.user ? console.log('Logged in') : console.log('Logged out');
+    setUser(state, action) {
+      state.userAcc = action.payload;
     },
   },
 });

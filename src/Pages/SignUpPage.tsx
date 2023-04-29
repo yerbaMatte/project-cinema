@@ -1,5 +1,5 @@
 import { SignUpCard } from '../Components/Auth/SignUpCard';
-import { onSubmitHandler } from '../Services/firebase';
+import { onSubmit as onSubmitHandler } from '../Services/firebase';
 import { initialTypes } from '../types/types';
 import { validationSchema } from '../Services/validationSchema';
 

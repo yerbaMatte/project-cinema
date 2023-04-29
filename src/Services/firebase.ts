@@ -6,10 +6,8 @@ import {
 } from 'firebase/auth';
 import { initialTypes, FormikActions, LogCred } from '../types/types';
 import { auth } from '../../firebase';
-import { useAppDispatch } from '../Hooks/hooks';
-import { signActions } from '../Store/auth-slice';
 
-export const onSubmitHandler = async (
+export const onSubmit = async (
   { firstName, lastName, email, password }: initialTypes,
   actions: FormikActions
 ) => {
