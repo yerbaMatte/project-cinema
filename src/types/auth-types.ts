@@ -41,3 +41,7 @@ export type LogCred = Omit<initialTypes, 'firstName' | 'lastName'>;
 export interface signOutHandler {
   signOutHandler: () => Promise<void>;
 }
+
+export interface SignOutButtonProps {
+  signOutHandler: React.MouseEventHandler<HTMLButtonElement>;
+}

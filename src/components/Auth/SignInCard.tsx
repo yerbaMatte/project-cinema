@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { fieldType, LogCred } from '../../types/types';
+import { fieldType, LogCred } from '../../types/auth-types';
 
 interface Props {
   initialValues: LogCred;

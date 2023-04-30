@@ -19,7 +19,7 @@ import {
 import { Link as ReachLink } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { fieldType, initialTypes } from '../../types/types';
+import { fieldType, initialTypes } from '../../types/auth-types';
 import { DisplayError } from '../Auth/DisplayError';
 import { CustomField } from '../Auth/CustomField';
 import Yup from 'yup';
@@ -60,19 +60,19 @@ export function SignUpCard({
                 <HStack>
                   <Box>
                     <CustomField
-                      inputName="firstName"
-                      inputLabel="First Name"
+                      inputName='firstName'
+                      inputLabel='First Name'
                     />
                   </Box>
                   <Box>
-                    <CustomField inputName="lastName" inputLabel="Last Name" />
+                    <CustomField inputName='lastName' inputLabel='Last Name' />
                   </Box>
                 </HStack>
-                <CustomField inputName="email" inputLabel="Email address" />
-                <Field name="password">
+                <CustomField inputName='email' inputLabel='Email address' />
+                <Field name='password'>
                   {({ field, form }: fieldType) => (
                     <FormControl
-                      id="password"
+                      id='password'
                       isRequired
                       isInvalid={form.errors.password && form.touched.password}
                     >
@@ -104,10 +104,10 @@ export function SignUpCard({
                 </Field>
                 <Stack spacing={10} pt={2}>
                   <Button
-                    type="submit"
+                    type='submit'
                     isLoading={isSubmitting}
-                    loadingText="Submitting"
-                    size="lg"
+                    loadingText='Submitting'
+                    size='lg'
                     bg={'blue.400'}
                     color={'white'}
                     _hover={{
@@ -120,7 +120,7 @@ export function SignUpCard({
                 <Stack pt={6}>
                   <Text align={'center'}>
                     Already a user?{' '}
-                    <Link color="#185bc7" as={ReachLink} to="/signin">
+                    <Link color='#185bc7' as={ReachLink} to='/signin'>
                       Login
                     </Link>
                   </Text>

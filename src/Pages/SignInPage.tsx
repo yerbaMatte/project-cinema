@@ -1,5 +1,5 @@
 import SignInCard from '../Components/Auth/SignInCard';
-import { LogCred } from '../types/types';
+import { LogCred } from '../types/auth-types';
 
 // test@gmail.com
 // 123456789
