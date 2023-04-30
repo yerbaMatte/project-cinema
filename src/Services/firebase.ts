@@ -27,3 +27,7 @@ export const loginUser = async ({ email, password }: LogCred) => {
     throw Error('BOOM');
   }
 };
+
+export const singOut = async () => {
+  signOut(auth);
+};

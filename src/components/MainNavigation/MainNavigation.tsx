@@ -21,8 +21,13 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
+import withMainNavigation from '../withMainNavigation';
 
-export default function MainNavigation() {
+type MainNavigationProps = {
+  children: JSX.Element;
+};
+
+function MainNavigation({ children }: MainNavigationProps) {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -75,16 +80,16 @@ export default function MainNavigation() {
           spacing={6}
           align={'center'}
         >
-          <Text>Empty</Text>
+          {children}
         </Stack>
       </Flex>
-
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
     </Box>
   );
 }
+export default withMainNavigation(MainNavigation);
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
