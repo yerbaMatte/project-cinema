@@ -11,11 +11,12 @@ export const useAuth = () => {
   useEffect(() => {
     const subscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        const { displayName, email } = user;
-        dispatch(signActions.setUser({ displayName, email }));
+        const { displayName: name, email } = user;
+        dispatch(signActions.setUser({ name, email }));
       } else {
-        console.log('there is no user');
+        console.log('There is no user');
       }
+      dispatch(signActions.setInit());
     });
 
     return () => subscribe();

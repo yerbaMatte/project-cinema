@@ -24,6 +24,9 @@ export const authSlice = createSlice({
     setUser(state, action) {
       state.userAcc = action.payload;
     },
+    setInit(state) {
+      state.isInit = false;
+    },
   },
 });
 

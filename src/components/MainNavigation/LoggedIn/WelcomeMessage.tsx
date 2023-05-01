@@ -1,5 +1,9 @@
 import { Text } from '@chakra-ui/react';
 
-export function WelcomeMessage() {
-  return <Text>Welcome back</Text>;
+type userName = {
+  userName: string | null;
+};
+
+export function WelcomeMessage({ userName }: userName) {
+  return <Text>Welcome back, {userName}!</Text>;
 }

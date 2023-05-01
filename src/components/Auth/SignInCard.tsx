@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, FormikHelpers } from 'formik';
 // Chakra UI
 import {
   Flex,
@@ -19,9 +19,10 @@ import { fieldType, LogCred } from '../../types/auth-types';
 
 interface Props {
   initialValues: LogCred;
+  signIn: (values: LogCred, actions: FormikHelpers<LogCred>) => void;
 }
 
-export default function SignUpCard({ initialValues }: Props) {
+export default function SignInCard({ initialValues, signIn }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -40,8 +41,7 @@ export default function SignUpCard({ initialValues }: Props) {
               welcome back!
             </Text>
           </Stack>
-          {/*  */}
-          <Formik initialValues={initialValues} onSubmit={() => {}}>
+          <Formik initialValues={initialValues} onSubmit={signIn}>
             {({ isSubmitting }) => (
               <Form>
                 <Field name='email'>

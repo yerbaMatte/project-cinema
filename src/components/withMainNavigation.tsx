@@ -10,7 +10,9 @@ const withMainNavigation = (
   Component: React.ComponentType<MainNavigationProps>
 ) => {
   function MainNavigation() {
-    const isLoggedIn = useAppSelector((state) => state.auth.userAcc);
+    //check if the userAcc.name has a string or null value (isLoggedIn)?
+    const isLoggedIn = useAppSelector((state) => state.auth.userAcc.name);
+
     if (isLoggedIn) {
       return (
         <Component>

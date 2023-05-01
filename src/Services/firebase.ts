@@ -2,10 +2,11 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
-  signOut,
 } from 'firebase/auth';
 import { initialTypes, FormikActions, LogCred } from '../types/auth-types';
 import { auth } from '../../firebase';
+import { useAppDispatch } from '../Hooks/hooks';
+import { signActions } from '../Store/auth-slice';
 
 export const onSubmit = async (
   { firstName, lastName, email, password }: initialTypes,
@@ -23,6 +24,6 @@ export const loginUser = async ({ email, password }: LogCred) => {
     const user = await signInWithEmailAndPassword(auth, email, password);
     return user;
   } catch (error) {
-    throw Error('BOOM');
+    throw Error('Invalid password or email');
   }
 };
