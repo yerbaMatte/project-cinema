@@ -1,33 +1,41 @@
+import { useState } from 'react';
 import SignInCard from '../Components/Auth/SignInCard';
 import { loginUser } from '../Services/firebase';
 import { LogCred } from '../types/auth-types';
 import { FormikHelpers } from 'formik';
-
-// test@gmail.com
-// 123456789
+import { useNavigate } from 'react-router-dom';
 
 export const SignInPage = () => {
+  const [isFailed, setIsFailed] = useState<boolean>(false);
+  const navigate = useNavigate();
+
   const initialValues: LogCred = {
     email: '',
     password: '',
   };
 
-  const onSubmitHandler = async (
+  const onLoginHandler = async (
     { email, password }: LogCred,
-    { setSubmitting }: FormikHelpers<LogCred>
+    { setSubmitting, setErrors }: FormikHelpers<LogCred>
   ) => {
     try {
       const user = await loginUser({ email, password });
+      setIsFailed(false);
       setSubmitting(false);
+      navigate('/');
+      return user;
     } catch (error) {
-      console.log(error);
-      setSubmitting(false);
+      setIsFailed(true);
     }
   };
 
   return (
     <>
-      <SignInCard signIn={onSubmitHandler} initialValues={initialValues} />
+      <SignInCard
+        logIn={onLoginHandler}
+        initialValues={initialValues}
+        isFailed={isFailed}
+      />
     </>
   );
 };

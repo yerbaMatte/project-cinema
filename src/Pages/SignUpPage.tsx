@@ -1,7 +1,7 @@
 import { SignUpCard } from '../Components/Auth/SignUpCard';
 import { onSubmit as onSubmitHandler } from '../Services/firebase';
 import { initialTypes } from '../types/auth-types';
-import { validationSchema } from '../Services/validationSchema';
+import { signUpSchema } from '../Services/signUpSchema';
 
 export const SignUpPage = () => {
   const initialValues: initialTypes = {
@@ -17,7 +17,7 @@ export const SignUpPage = () => {
     <SignUpCard
       onSubmitHandler={onSubmitHandler}
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={signUpSchema}
     />
   );
 };

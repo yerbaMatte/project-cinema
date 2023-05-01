@@ -1,4 +1,4 @@
-import { Formik, Form, Field, FormikHelpers } from 'formik';
+import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
 // Chakra UI
 import {
   Flex,
@@ -12,6 +12,7 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  FormErrorMessage,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
@@ -19,10 +20,11 @@ import { fieldType, LogCred } from '../../types/auth-types';
 
 interface Props {
   initialValues: LogCred;
-  signIn: (values: LogCred, actions: FormikHelpers<LogCred>) => void;
+  logIn: (values: LogCred, actions: FormikHelpers<LogCred>) => void;
+  isFailed: boolean;
 }
 
-export default function SignInCard({ initialValues, signIn }: Props) {
+export default function SignInCard({ initialValues, logIn, isFailed }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -41,9 +43,9 @@ export default function SignInCard({ initialValues, signIn }: Props) {
               welcome back!
             </Text>
           </Stack>
-          <Formik initialValues={initialValues} onSubmit={signIn}>
+          <Formik initialValues={initialValues} onSubmit={logIn}>
             {({ isSubmitting }) => (
-              <Form>
+              <Form noValidate>
                 <Field name='email'>
                   {({ field }: fieldType) => (
                     <FormControl id='email'>
@@ -90,6 +92,10 @@ export default function SignInCard({ initialValues, signIn }: Props) {
                     Sign in
                   </Button>
                 </Stack>
+
+                <FormControl isInvalid={isFailed}>
+                  <FormErrorMessage>Invalid password or email</FormErrorMessage>
+                </FormControl>
               </Form>
             )}
           </Formik>
