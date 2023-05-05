@@ -13,7 +13,7 @@ export const onSubmit = async (
   const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
   await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-
+  const userIn = await loginUser({ email, password });
   actions.setSubmitting(false);
 };
 

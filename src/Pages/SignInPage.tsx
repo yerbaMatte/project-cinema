@@ -16,7 +16,7 @@ export const SignInPage = () => {
 
   const onLoginHandler = async (
     { email, password }: LogCred,
-    { setSubmitting, setErrors }: FormikHelpers<LogCred>
+    { setSubmitting }: FormikHelpers<LogCred>
   ) => {
     try {
       const user = await loginUser({ email, password });

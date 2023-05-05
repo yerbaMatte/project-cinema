@@ -21,7 +21,3 @@ export const SignUpPage = () => {
     />
   );
 };
-
-// JEST test
-
-// export default PrivateRoute(SignUpPage);
