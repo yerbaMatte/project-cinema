@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-import { initialTypes, FormikActions, LogCred } from '../types/auth-types';
+import { initialTypes, LogCred } from '../types/auth-types';
 import { auth } from '../../firebase';
 
 export const registerUser = async ({
@@ -19,8 +19,8 @@ export const registerUser = async ({
       password
     );
     await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-    const userIn = await loginUser({ email, password });
-    return userIn;
+
+    return user;
   } catch (error) {}
 };
 

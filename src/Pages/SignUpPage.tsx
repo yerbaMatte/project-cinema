@@ -1,6 +1,6 @@
 import { SignUpCard } from '../Components/Auth/SignUpCard';
-import { registerUser } from '../Services/firebase';
-import { initialTypes, FormikActions } from '../types/auth-types';
+import { loginUser, registerUser } from '../Services/firebase';
+import { initialTypes } from '../types/auth-types';
 import { signUpSchema } from '../Services/signUpSchema';
 import { FormikHelpers } from 'formik';
 
@@ -18,6 +18,7 @@ export const SignUpPage = () => {
   ) => {
     setSubmitting(true);
     const user = await registerUser({ firstName, lastName, email, password });
+    const autoLogIn = await loginUser({ email, password });
   };
 
   return (

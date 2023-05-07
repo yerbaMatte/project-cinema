@@ -1,4 +1,3 @@
-import { useAppSelector } from '../Hooks/hooks';
 import { LoggedInNav } from './MainNavigation/LoggedIn/LoggedInNav';
 import { LoggedOutNav } from './MainNavigation/LoggedOut/LoggedOutNav';
 import { useAuth } from '../Hooks/onAuth';
@@ -13,7 +12,7 @@ const withMainNavigation = (
   function MainNavigation() {
     //check if the userAcc.name has a string or null value (isLoggedIn)?
     const { userAcc } = useAuth();
-    console.log(userAcc);
+    // console.log(userAcc);
     if (userAcc.email) {
       return (
         <Component>

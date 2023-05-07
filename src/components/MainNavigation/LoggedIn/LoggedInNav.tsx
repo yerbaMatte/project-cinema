@@ -5,6 +5,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../../firebase';
 import { useAppDispatch, useAppSelector } from '../../../Hooks/hooks';
 import { signActions } from '../../../Store/auth-slice';
+import { useAuth } from '../../../Hooks/onAuth';
 
 export const LoggedInNav = () => {
   const dispatch = useAppDispatch();
@@ -14,11 +15,11 @@ export const LoggedInNav = () => {
     dispatch(signActions.setUser({ name: null, email: null }));
   };
 
-  const userName = useAppSelector((state) => state.auth.userAcc.name);
+  const { userAcc } = useAuth();
 
   return (
     <>
-      <WelcomeMessage userName={userName} />
+      <WelcomeMessage userName={userAcc.name} />
       <MyAccountButton />
       <SignOutButton signOutHandler={signOutHandler} />
     </>
