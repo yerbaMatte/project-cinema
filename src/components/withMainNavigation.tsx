@@ -1,6 +1,7 @@
 import { useAppSelector } from '../Hooks/hooks';
 import { LoggedInNav } from './MainNavigation/LoggedIn/LoggedInNav';
 import { LoggedOutNav } from './MainNavigation/LoggedOut/LoggedOutNav';
+import { useAuth } from '../Hooks/onAuth';
 
 type MainNavigationProps = {
   children: JSX.Element;
@@ -11,9 +12,9 @@ const withMainNavigation = (
 ) => {
   function MainNavigation() {
     //check if the userAcc.name has a string or null value (isLoggedIn)?
-    const isLoggedIn = useAppSelector((state) => state.auth.userAcc.name);
-
-    if (isLoggedIn) {
+    const { userAcc } = useAuth();
+    console.log(userAcc);
+    if (userAcc.email) {
       return (
         <Component>
           <LoggedInNav />
