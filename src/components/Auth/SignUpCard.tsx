@@ -1,5 +1,4 @@
-import { Formik, Form, Field } from 'formik';
-// Chakra UI
+import { Formik, Form, Field, FormikHelpers } from 'formik';
 import {
   Link,
   Flex,
@@ -24,15 +23,20 @@ import { DisplayError } from '../Auth/DisplayError';
 import { CustomField } from '../Auth/CustomField';
 import Yup from 'yup';
 
+interface Props {
+  onSubmitHandler: (
+    values: initialTypes,
+    actions: FormikHelpers<initialTypes>
+  ) => void;
+  initialValues: initialTypes;
+  validationSchema: Yup.ObjectSchema<initialTypes>;
+}
+
 export function SignUpCard({
   onSubmitHandler,
   initialValues,
   validationSchema,
-}: {
-  onSubmitHandler: (values: initialTypes, actions: any) => Promise<void>;
-  initialValues: initialTypes;
-  validationSchema: Yup.ObjectSchema<initialTypes>;
-}) {
+}: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (

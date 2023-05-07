@@ -1,7 +1,8 @@
 import { SignUpCard } from '../Components/Auth/SignUpCard';
-import { onSubmit as onSubmitHandler } from '../Services/firebase';
-import { initialTypes } from '../types/auth-types';
+import { registerUser } from '../Services/firebase';
+import { initialTypes, FormikActions } from '../types/auth-types';
 import { signUpSchema } from '../Services/signUpSchema';
+import { FormikHelpers } from 'formik';
 
 export const SignUpPage = () => {
   const initialValues: initialTypes = {
@@ -11,7 +12,13 @@ export const SignUpPage = () => {
     password: '',
   };
 
-  //TODO: add auto lgged in after singin up
+  const onSubmitHandler = async (
+    { firstName, lastName, email, password }: initialTypes,
+    { setSubmitting }: FormikHelpers<initialTypes>
+  ) => {
+    setSubmitting(true);
+    const user = await registerUser({ firstName, lastName, email, password });
+  };
 
   return (
     <SignUpCard

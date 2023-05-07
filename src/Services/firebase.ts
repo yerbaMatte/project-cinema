@@ -6,15 +6,22 @@ import {
 import { initialTypes, FormikActions, LogCred } from '../types/auth-types';
 import { auth } from '../../firebase';
 
-export const onSubmit = async (
-  { firstName, lastName, email, password }: initialTypes,
-  actions: FormikActions
-) => {
-  const { user } = await createUserWithEmailAndPassword(auth, email, password);
-
-  await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-  const userIn = await loginUser({ email, password });
-  actions.setSubmitting(false);
+export const registerUser = async ({
+  firstName,
+  lastName,
+  email,
+  password,
+}: initialTypes) => {
+  try {
+    const { user } = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    await updateProfile(user, { displayName: `${firstName} ${lastName}` });
+    const userIn = await loginUser({ email, password });
+    return userIn;
+  } catch (error) {}
 };
 
 export const loginUser = async ({ email, password }: LogCred) => {

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { User } from 'firebase/auth';
 
 interface UserAccProps {
   name: string | null;

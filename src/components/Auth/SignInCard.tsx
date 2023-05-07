@@ -1,5 +1,4 @@
 import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
-// Chakra UI
 import {
   Flex,
   FormControl,
@@ -21,10 +20,9 @@ import { fieldType, LogCred } from '../../types/auth-types';
 interface Props {
   initialValues: LogCred;
   logIn: (values: LogCred, actions: FormikHelpers<LogCred>) => void;
-  isFailed: boolean;
 }
 
-export default function SignInCard({ initialValues, logIn, isFailed }: Props) {
+export default function SignInCard({ initialValues, logIn }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -92,10 +90,6 @@ export default function SignInCard({ initialValues, logIn, isFailed }: Props) {
                     Sign in
                   </Button>
                 </Stack>
-
-                <FormControl isInvalid={isFailed}>
-                  <FormErrorMessage>Invalid password or email</FormErrorMessage>
-                </FormControl>
               </Form>
             )}
           </Formik>
