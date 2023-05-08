@@ -19,7 +19,7 @@ export const registerUser = async ({
       password
     );
     await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-
+    console.log(user);
     return user;
   } catch (error) {}
 };

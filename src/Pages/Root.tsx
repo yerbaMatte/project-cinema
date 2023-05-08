@@ -3,7 +3,7 @@ import MainNavigation from '../Components/MainNavigation/MainNavigation';
 import { useAuth } from '../Hooks/onAuth';
 
 export const Root = () => {
-  const { userAcc, isInit } = useAuth();
+  const { isInit } = useAuth();
 
   return (
     <>

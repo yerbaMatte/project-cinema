@@ -3,6 +3,8 @@ import { loginUser, registerUser } from '../Services/firebase';
 import { initialTypes } from '../types/auth-types';
 import { signUpSchema } from '../Services/signUpSchema';
 import { FormikHelpers } from 'formik';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 export const SignUpPage = () => {
   const initialValues: initialTypes = {
@@ -17,8 +19,9 @@ export const SignUpPage = () => {
     { setSubmitting }: FormikHelpers<initialTypes>
   ) => {
     setSubmitting(true);
-    const user = await registerUser({ firstName, lastName, email, password });
-    const autoLogIn = await loginUser({ email, password });
+    await registerUser({ firstName, lastName, email, password });
+    await signOut(auth);
+    await loginUser({ email, password });
   };
 
   return (
