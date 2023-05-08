@@ -15,10 +15,17 @@ import {
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, LogCred } from '../../types/auth-types';
+import Yup from 'yup';
+
+interface loginCredentials {
+  email: string;
+  password: string;
+}
 
 interface Props {
   initialValues: LogCred;
   logIn: (values: LogCred, actions: FormikHelpers<LogCred>) => void;
+  validationSchema: Yup.ObjectSchema<loginCredentials>;
 }
 
 export default function SignInCard({ initialValues, logIn }: Props) {

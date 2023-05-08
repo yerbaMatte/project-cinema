@@ -3,6 +3,7 @@ import { loginUser } from '../Services/firebase';
 import { LogCred } from '../types/auth-types';
 import { FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { signInSchema } from '../Services/signInSchema';
 
 export const SignInPage = () => {
   const navigate = useNavigate();
@@ -20,7 +21,6 @@ export const SignInPage = () => {
     try {
       await loginUser({ email, password });
       navigate('/');
-      console.log('gowno');
     } catch (error: any) {
       setStatus(error.message);
     } finally {
@@ -30,7 +30,11 @@ export const SignInPage = () => {
 
   return (
     <>
-      <SignInCard logIn={onLoginHandler} initialValues={initialValues} />
+      <SignInCard
+        logIn={onLoginHandler}
+        initialValues={initialValues}
+        validationSchema={signInSchema}
+      />
     </>
   );
 };
