@@ -12,13 +12,14 @@ export const useAuth = () => {
     const subscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         const { displayName: name, email } = user;
-        console.log(user);
         dispatch(signActions.setUser({ name, email }));
         console.log('User is logged in');
       } else {
         console.log('There is no user');
       }
+      //FIXME: weird behaviour of setInit dispatch action
       if (isInit) {
+        console.log(isInit);
         dispatch(signActions.setInit());
       }
     });
