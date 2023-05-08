@@ -14,12 +14,18 @@ export const SignInPage = () => {
 
   const onLoginHandler = async (
     { email, password }: LogCred,
-    { setSubmitting }: FormikHelpers<LogCred>
+    { setSubmitting, setStatus }: FormikHelpers<LogCred>
   ) => {
     setSubmitting(true);
-    const user = await loginUser({ email, password });
-    navigate('/');
-    setSubmitting(false);
+    try {
+      await loginUser({ email, password });
+      navigate('/');
+      console.log('gowno');
+    } catch (error: any) {
+      setStatus(error.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

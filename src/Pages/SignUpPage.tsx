@@ -16,12 +16,18 @@ export const SignUpPage = () => {
 
   const onSubmitHandler = async (
     { firstName, lastName, email, password }: initialTypes,
-    { setSubmitting }: FormikHelpers<initialTypes>
+    { setSubmitting, setStatus }: FormikHelpers<initialTypes>
   ) => {
     setSubmitting(true);
-    await registerUser({ firstName, lastName, email, password });
-    await signOut(auth);
-    await loginUser({ email, password });
+    try {
+      await registerUser({ firstName, lastName, email, password });
+      await signOut(auth);
+      await loginUser({ email, password });
+    } catch (error: any) {
+      setStatus(error.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

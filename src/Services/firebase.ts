@@ -19,16 +19,19 @@ export const registerUser = async ({
       password
     );
     await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-    console.log(user);
-    return user;
-  } catch (error) {}
+  } catch (error: any) {
+    //FIXME: type of error?
+    if (error.code === 'auth/email-already-in-use') {
+      throw new Error('That email is already in use.');
+    }
+  }
 };
 
 export const loginUser = async ({ email, password }: LogCred) => {
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
     return user;
-  } catch (error) {
-    throw Error('Invalid password or email');
+  } catch (error: any) {
+    throw new Error('Invalid password or email');
   }
 };

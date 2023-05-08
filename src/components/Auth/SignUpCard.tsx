@@ -59,7 +59,7 @@ export function SignUpCard({
             onSubmit={onSubmitHandler}
             validationSchema={validationSchema}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, status }) => (
               <Form noValidate>
                 <HStack>
                   <Box>
@@ -128,6 +128,11 @@ export function SignUpCard({
                       Login
                     </Link>
                   </Text>
+                  {status && (
+                    <Text align={'center'} color={'red'}>
+                      {status}
+                    </Text>
+                  )}
                 </Stack>
               </Form>
             )}

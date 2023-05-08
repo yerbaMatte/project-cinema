@@ -1,4 +1,4 @@
-import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
+import { Formik, Form, Field, FormikHelpers } from 'formik';
 import {
   Flex,
   FormControl,
@@ -11,7 +11,6 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  FormErrorMessage,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
@@ -42,7 +41,7 @@ export default function SignInCard({ initialValues, logIn }: Props) {
             </Text>
           </Stack>
           <Formik initialValues={initialValues} onSubmit={logIn}>
-            {({ isSubmitting }) => (
+            {({ isSubmitting, status }) => (
               <Form noValidate>
                 <Field name='email'>
                   {({ field }: fieldType) => (
@@ -75,7 +74,7 @@ export default function SignInCard({ initialValues, logIn }: Props) {
                     </FormControl>
                   )}
                 </Field>
-                <Stack spacing={10} pt={2}>
+                <Stack spacing={4} pt={6}>
                   <Button
                     type='submit'
                     isLoading={isSubmitting}
@@ -89,6 +88,9 @@ export default function SignInCard({ initialValues, logIn }: Props) {
                   >
                     Sign in
                   </Button>
+                  <Text align={'center'} color={'red'}>
+                    {status}
+                  </Text>
                 </Stack>
               </Form>
             )}

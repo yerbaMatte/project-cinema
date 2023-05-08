@@ -19,7 +19,7 @@ export const useAuth = () => {
       }
       //FIXME: weird behaviour of setInit dispatch action
       if (isInit) {
-        console.log(isInit);
+        // console.log(isInit); returns true everytime?
         dispatch(signActions.setInit());
       }
     });
