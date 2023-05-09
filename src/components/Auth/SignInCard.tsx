@@ -58,7 +58,7 @@ export default function SignInCard({
             onSubmit={logIn}
             validationSchema={validationSchema}
           >
-            {({ isSubmitting, status }) => (
+            {({ isSubmitting, status, isValid }) => (
               <Form noValidate>
                 <CustomField inputName='email' inputLabel='Email address' />
                 <Field name='password'>
