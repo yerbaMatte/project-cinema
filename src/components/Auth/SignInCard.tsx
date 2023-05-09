@@ -16,7 +16,8 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, LogCred } from '../../types/auth-types';
 import Yup from 'yup';
-import { DisplayError } from '../Auth/DisplayError';
+import { CustomField } from './CustomField';
+import { DisplayError } from './DisplayError';
 
 interface loginCredentials {
   email: string;
@@ -29,7 +30,11 @@ interface Props {
   validationSchema: Yup.ObjectSchema<loginCredentials>;
 }
 
-export default function SignInCard({ initialValues, logIn }: Props) {
+export default function SignInCard({
+  initialValues,
+  logIn,
+  validationSchema,
+}: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -41,35 +46,28 @@ export default function SignInCard({ initialValues, logIn }: Props) {
         bg={useColorModeValue('gray.50', 'gray.800')}
       >
         {' '}
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack spacing={6} mx={'auto'} minW={'25vw'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'}>Sign In</Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
               welcome back!
             </Text>
           </Stack>
-          <Formik initialValues={initialValues} onSubmit={logIn}>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={logIn}
+            validationSchema={validationSchema}
+          >
             {({ isSubmitting, status }) => (
               <Form noValidate>
-                <Field name='email'>
+                <CustomField inputName='email' inputLabel='Email address' />
+                <Field name='password'>
                   {({ field, form }: fieldType) => (
                     <FormControl
-                      id='email'
+                      id='password'
                       isRequired
-                      isInvalid={form.errors.email && form.touched.email}
+                      isInvalid={form.errors.password && form.touched.password}
                     >
-                      <FormLabel>Email address</FormLabel>
-                      <Input {...field} type='email' />
-                      <DisplayError
-                        invalidMessage={form.errors.email}
-                        isInvalid={form.errors.email && form.touched.email}
-                      />
-                    </FormControl>
-                  )}
-                </Field>
-                <Field name='password'>
-                  {({ field }: fieldType) => (
-                    <FormControl id='password'>
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -87,6 +85,12 @@ export default function SignInCard({ initialValues, logIn }: Props) {
                           </Button>
                         </InputRightElement>
                       </InputGroup>
+                      <DisplayError
+                        invalidMessage={form.errors.password}
+                        isInvalid={
+                          form.errors.password && form.touched.password
+                        }
+                      />
                     </FormControl>
                   )}
                 </Field>
