@@ -16,6 +16,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, LogCred } from '../../types/auth-types';
 import Yup from 'yup';
+import { DisplayError } from '../Auth/DisplayError';
 
 interface loginCredentials {
   email: string;
@@ -51,10 +52,18 @@ export default function SignInCard({ initialValues, logIn }: Props) {
             {({ isSubmitting, status }) => (
               <Form noValidate>
                 <Field name='email'>
-                  {({ field }: fieldType) => (
-                    <FormControl id='email'>
+                  {({ field, form }: fieldType) => (
+                    <FormControl
+                      id='email'
+                      isRequired
+                      isInvalid={form.errors.email && form.touched.email}
+                    >
                       <FormLabel>Email address</FormLabel>
                       <Input {...field} type='email' />
+                      <DisplayError
+                        invalidMessage={form.errors.email}
+                        isInvalid={form.errors.email && form.touched.email}
+                      />
                     </FormControl>
                   )}
                 </Field>
