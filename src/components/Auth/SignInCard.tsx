@@ -46,7 +46,7 @@ export default function SignInCard({
         bg={useColorModeValue('gray.50', 'gray.800')}
       >
         {' '}
-        <Stack spacing={6} mx={'auto'} minW={'25vw'} py={12} px={6}>
+        <Stack spacing={6} mx={'auto'} minW={'20vw'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'}>Sign In</Heading>
             <Text fontSize={'lg'} color={'gray.600'}>

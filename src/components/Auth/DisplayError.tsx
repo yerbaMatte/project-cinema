@@ -10,9 +10,9 @@ export const DisplayError = ({
   return (
     <>
       {isInvalid ? (
-        <FormErrorMessage my={1}>{invalidMessage}</FormErrorMessage>
+        <FormErrorMessage my={0.5}>{invalidMessage}</FormErrorMessage>
       ) : (
-        <FormHelperText my={1}>‎ </FormHelperText>
+        <FormHelperText my={0.5}>‎ </FormHelperText>
       )}
     </>
   );
