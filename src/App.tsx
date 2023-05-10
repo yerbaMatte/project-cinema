@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { SignUpPage } from './Pages/SignUpPage';
 import { SignInPage } from './Pages/SignInPage';
-import { MyAccountPage } from './Pages/MyAccountPage';
+import MyAccountPage from './Pages/MyAccountPage';
 import { Root } from './Pages/Root';
 
 export function App() {
@@ -21,7 +21,3 @@ export function App() {
 }
 
 export default App;
-
-//1. Custom hook for auth
-//2. PrivateRoute Component (HOC)
-//3.
