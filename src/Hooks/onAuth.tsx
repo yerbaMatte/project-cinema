@@ -13,11 +13,14 @@ export const useAuth = () => {
       if (user) {
         const { displayName: name, email } = user;
         dispatch(signActions.setUser({ name, email }));
+        console.log(user);
+        const nameSss = user.displayName;
         console.log('User is logged in');
       } else {
         console.log('There is no user');
       }
       //FIXME: weird behaviour of setInit dispatch action
+      // userAccLoading
       if (isInit) {
         // console.log(isInit); returns true everytime?
         dispatch(signActions.setInit());
