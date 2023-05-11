@@ -6,7 +6,7 @@ import { FormikHelpers } from 'formik';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 
-export const SignUpPage = () => {
+export default SignUpPage = () => {
   const initialValues: initialTypes = {
     firstName: '',
     lastName: '',

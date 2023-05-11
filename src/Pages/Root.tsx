@@ -1,13 +1,17 @@
 import { Outlet } from 'react-router-dom';
 import MainNavigation from '../Components/MainNavigation/MainNavigation';
 import { useAuth } from '../Hooks/onAuth';
+import { useAppSelector } from '../Hooks/hooks';
 
-export const Root = () => {
-  const { isInit, userAcc } = useAuth();
+export default Root = () => {
+  useAuth();
+  const isUserAccLoading = useAppSelector(
+    (state) => state.auth.isUserAccLoading
+  );
 
   return (
     <>
-      {!isInit && (
+      {!isUserAccLoading && (
         <>
           <MainNavigation />
           <main>

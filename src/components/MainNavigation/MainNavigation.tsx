@@ -63,8 +63,9 @@ function MainNavigation({ children }: MainNavigationProps) {
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
               color={useColorModeValue('gray.800', 'white')}
+              fontWeight={'bold'}
             >
-              MyAmazingTheater
+              CinemaW🌎RLD
             </Text>
           </RouterLink>
 
@@ -253,24 +254,11 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "WHAT'S ON",
-    children: [
-      {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#',
-      },
-    ],
+    label: 'NOW PLAYING',
+    href: 'nowplaying',
   },
   {
     label: 'EVENTS',
-    children: [
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
-      },
-    ],
   },
   {
     label: 'PRICES',

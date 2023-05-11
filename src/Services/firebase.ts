@@ -26,6 +26,8 @@ export const registerUser = async ({
     }
   }
 };
+//TODO: create a fn to logout with trycatch
+// use it in the loggedInNav
 
 export const loginUser = async ({ email, password }: LogCred) => {
   try {
@@ -35,3 +37,5 @@ export const loginUser = async ({ email, password }: LogCred) => {
     throw new Error('Invalid password or email');
   }
 };
+
+// Movies -> public route

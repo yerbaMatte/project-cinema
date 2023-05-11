@@ -5,7 +5,7 @@ import { FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { signInSchema } from '../Services/signInSchema';
 
-export const SignInPage = () => {
+export default SignInPage = () => {
   const navigate = useNavigate();
 
   const initialValues: LogCred = {

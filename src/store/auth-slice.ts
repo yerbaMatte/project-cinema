@@ -7,13 +7,13 @@ interface UserAccProps {
 
 const initialState: {
   userAcc: UserAccProps;
-  isInit: Boolean;
+  isUserAccLoading: Boolean;
 } = {
   userAcc: {
     name: null,
     email: null,
   },
-  isInit: true,
+  isUserAccLoading: true,
 };
 
 export const authSlice = createSlice({
@@ -23,10 +23,11 @@ export const authSlice = createSlice({
     setUser(state, action) {
       state.userAcc = action.payload;
     },
-    setInit(state) {
-      state.isInit = false;
+    setIsUserAccLoading(state, action) {
+      state.isUserAccLoading = action.payload;
     },
   },
+  // TODO: type action
 });
 
 export const signActions = authSlice.actions;

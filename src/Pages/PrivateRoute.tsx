@@ -6,6 +6,7 @@ type ComponentType = () => JSX.Element;
 function PrivateRoute(Component: ComponentType) {
   return function protectedRoute() {
     const { userAcc } = useAuth();
+    //TODO: useAppSelector
     //get current userAcc state object and check if the email exists
     return userAcc.email ? <Component /> : <Navigate to={'/'} />;
   };

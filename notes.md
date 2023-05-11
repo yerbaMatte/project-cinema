@@ -1,4 +1,8 @@
-1. /Hooks/onAuth.tsx
-   Weird isInit state behaviour, state is changed even when the condition is not met?
+1. Styling JSX.Elements (CSS)
+   NavLink className/style
 
-2.
+const activeStyles = {
+fontWeight: "bold",
+textDecoration: "underline",
+color: "#161616"
+}
