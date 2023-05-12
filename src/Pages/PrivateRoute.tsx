@@ -1,13 +1,12 @@
-import { useAuth } from '../Hooks/onAuth';
 import { Navigate } from 'react-router-dom';
+import { useAppSelector } from '../Hooks/hooks';
 
 type ComponentType = () => JSX.Element;
 
 function PrivateRoute(Component: ComponentType) {
   return function protectedRoute() {
-    const { userAcc } = useAuth();
-    //TODO: useAppSelector
-    //get current userAcc state object and check if the email exists
+    const userAcc = useAppSelector((state) => state.auth.userAcc);
+
     return userAcc.email ? <Component /> : <Navigate to={'/'} />;
   };
 }

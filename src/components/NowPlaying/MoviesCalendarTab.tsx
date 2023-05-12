@@ -2,30 +2,36 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import MoviesDayList from './MoviesDayList';
 
 function MoviesCalendarTab() {
-  return (
-    <Tabs isLazy>
-      <TabList>
-        <Tab>Monday</Tab>
-        <Tab>Tuesday</Tab>
-        <Tab>Wednesday</Tab>
-        <Tab>Thursday</Tab>
-        <Tab>Friday</Tab>
-        <Tab>Saturday</Tab>
-        <Tab>Sunday</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>
-          <MoviesDayList />
-        </TabPanel>
-        <TabPanel>Tuesday</TabPanel>
-        <TabPanel>Wednesday</TabPanel>
-        <TabPanel>Thursday</TabPanel>
-        <TabPanel>Friday</TabPanel>
-        <TabPanel>Saturday</TabPanel>
-        <TabPanel>Sunday</TabPanel>
-      </TabPanels>
-    </Tabs>
-  );
+  const CreateMoviesTab = ({ data }) => {
+    return (
+      <Tabs isLazy>
+        <TabList>
+          {data.map((tab, index) => (
+            <Tab key={index}>{tab.day}</Tab>
+          ))}
+        </TabList>
+        <TabPanels>
+          {data.map((tab, index) => (
+            <TabPanel key={index}>
+              <MoviesDayList />
+            </TabPanel>
+          ))}
+        </TabPanels>
+      </Tabs>
+    );
+  };
+
+  const tabData = [
+    { day: 'Monday', movieList: '1' },
+    { day: 'Tuesday', movieList: '2' },
+    { day: 'Wednesday', movieList: '3' },
+    { day: 'Thursday', movieList: '4' },
+    { day: 'Friday', movieList: '5' },
+    { day: 'Saturday', movieList: '6' },
+    { day: 'Sunday', movieList: '7' },
+  ];
+
+  return <CreateMoviesTab data={tabData} />;
 }
 
 export default MoviesCalendarTab;

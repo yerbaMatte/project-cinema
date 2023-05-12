@@ -1,15 +1,12 @@
 import { MyAccountButton } from './MyAccountButton';
 import { SignOutButton } from '../LoggedIn/SignOutButton';
 import { WelcomeMessage } from '../LoggedIn/WelcomeMessage';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../../../firebase';
 import { useAppSelector } from '../../../Hooks/hooks';
+import { signOutUser } from '../../../Services/firebase';
 
 export const LoggedInNav = () => {
   const signOutHandler = () => {
-    // firebase service \/ put inside firebase
-    signOut(auth);
-    // and wrap it trycatch
+    signOutUser();
   };
 
   const userName = useAppSelector((state) => state.auth.userAcc.name);

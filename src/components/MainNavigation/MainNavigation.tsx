@@ -55,6 +55,7 @@ function MainNavigation({ children }: MainNavigationProps) {
               fontFamily={'heading'}
               color={useColorModeValue('gray.800', 'white')}
               fontWeight={'bold'}
+              fontSize={18}
             >
               CinemaW🌎RLD
             </Text>

@@ -27,7 +27,6 @@ export const authSlice = createSlice({
       state.isUserAccLoading = action.payload;
     },
   },
-  // TODO: type action
 });
 
 export const signActions = authSlice.actions;

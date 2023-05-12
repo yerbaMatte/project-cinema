@@ -1,5 +1,7 @@
 import axios from 'axios';
 import NowPlayingContent from '../Components/NowPlaying/NowPlayingContent';
+import { useAppDispatch } from '../Hooks/hooks';
+import { moviesActions } from '../Store/movies-slice';
 
 export function NowPlaying() {
   const options = {
@@ -13,14 +15,17 @@ export function NowPlaying() {
     },
   };
 
+  const dispatch = useAppDispatch();
+
   axios
     .request(options)
     .then(function (response) {
-      console.log(response.data);
+      dispatch(moviesActions.setData(response.data));
     })
     .catch(function (error) {
       console.error(error);
     });
+
   return <NowPlayingContent />;
 }
 
