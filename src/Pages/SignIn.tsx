@@ -1,4 +1,4 @@
-import SignInCard from '../Components/Auth/SignInContent';
+import SignInContent from '../Components/Auth/SignInContent';
 import { loginUser } from '../Services/firebase';
 import { LogCred } from '../types/auth-types';
 import { FormikHelpers } from 'formik';
@@ -30,7 +30,7 @@ const SignIn = () => {
 
   return (
     <>
-      <SignInCard
+      <SignInContent
         logIn={onLoginHandler}
         initialValues={initialValues}
         validationSchema={signInSchema}

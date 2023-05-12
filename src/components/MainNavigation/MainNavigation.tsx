@@ -172,5 +172,3 @@ const NAV_ITEMS: Array<NavItem> = [
     to: 'aboutus',
   },
 ];
-
-console.log(NAV_ITEMS);

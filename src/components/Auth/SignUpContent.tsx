@@ -32,7 +32,7 @@ interface Props {
   validationSchema: Yup.ObjectSchema<initialTypes>;
 }
 
-export function SignUpContent({
+export default function SignUpContent({
   onSubmitHandler,
   initialValues,
   validationSchema,

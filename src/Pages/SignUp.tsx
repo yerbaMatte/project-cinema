@@ -1,4 +1,4 @@
-import { SignUpCard } from '../Components/Auth/SignUpContent';
+import SignUpContent from '../Components/Auth/SignUpContent';
 import { loginUser, registerUser } from '../Services/firebase';
 import { initialTypes } from '../types/auth-types';
 import { signUpSchema } from '../Services/signUpSchema';
@@ -31,7 +31,7 @@ const SignUp = () => {
   };
 
   return (
-    <SignUpCard
+    <SignUpContent
       onSubmitHandler={onSubmitHandler}
       initialValues={initialValues}
       validationSchema={signUpSchema}
