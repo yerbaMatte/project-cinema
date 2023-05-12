@@ -3,7 +3,7 @@ import MainNavigation from '../Components/MainNavigation/MainNavigation';
 import { useAuth } from '../Hooks/onAuth';
 import { useAppSelector } from '../Hooks/hooks';
 
-export default Root = () => {
+const Root = () => {
   useAuth();
   const isUserAccLoading = useAppSelector(
     (state) => state.auth.isUserAccLoading
@@ -22,3 +22,5 @@ export default Root = () => {
     </>
   );
 };
+
+export default Root;

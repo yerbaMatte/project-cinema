@@ -1,11 +1,11 @@
-import SignInCard from '../Components/Auth/SignInCard';
+import SignInCard from '../Components/Auth/SignInContent';
 import { loginUser } from '../Services/firebase';
 import { LogCred } from '../types/auth-types';
 import { FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { signInSchema } from '../Services/signInSchema';
 
-export default SignInPage = () => {
+const SignIn = () => {
   const navigate = useNavigate();
 
   const initialValues: LogCred = {
@@ -38,3 +38,5 @@ export default SignInPage = () => {
     </>
   );
 };
+
+export default SignIn;

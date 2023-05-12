@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SignUpPage from './Pages/SignUpPage';
-import SignInPage from './Pages/SignInPage';
-import MyAccountPage from './Pages/MyAccountPage';
+import SignUp from './Pages/SignUp';
+import SignIn from './Pages/SignIn';
+import MyAccount from './Pages/MyAccount';
 import NowPlaying from './Pages/NowPlaying';
+import Home from './Pages/Home';
 import Root from './Pages/Root';
 
 export function App() {
@@ -11,11 +12,11 @@ export function App() {
       path: '/',
       element: <Root />,
       children: [
-        { index: true, element: <h1>Main Page</h1> },
+        { index: true, element: <Home /> },
         { path: 'nowplaying', element: <NowPlaying /> },
-        { path: 'signup', element: <SignUpPage /> },
-        { path: 'signin', element: <SignInPage /> },
-        { path: 'myaccount', element: <MyAccountPage /> },
+        { path: 'signup', element: <SignUp /> },
+        { path: 'signin', element: <SignIn /> },
+        { path: 'myaccount', element: <MyAccount /> },
       ],
     },
   ]);

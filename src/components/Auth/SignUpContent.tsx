@@ -19,8 +19,8 @@ import { Link as ReachLink } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { fieldType, initialTypes } from '../../types/auth-types';
-import { DisplayError } from '../Auth/DisplayError';
-import { CustomField } from '../Auth/CustomField';
+import { DisplayError } from './DisplayError';
+import { CustomField } from './CustomField';
 import Yup from 'yup';
 
 interface Props {
@@ -32,7 +32,7 @@ interface Props {
   validationSchema: Yup.ObjectSchema<initialTypes>;
 }
 
-export function SignUpCard({
+export function SignUpContent({
   onSubmitHandler,
   initialValues,
   validationSchema,

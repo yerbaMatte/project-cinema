@@ -17,6 +17,7 @@
     "@gatsbyjs/reach-router": "^2.0.1",
     "@react-native-firebase/app": "^17.4.2",
     "@reduxjs/toolkit": "^1.9.3",
+    "axios": "^1.4.0",
     "firebase": "^9.20.0",
     "firebase-auth": "^0.1.2",
     "formik": "^2.2.9",

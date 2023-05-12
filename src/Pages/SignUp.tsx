@@ -1,4 +1,4 @@
-import { SignUpCard } from '../Components/Auth/SignUpCard';
+import { SignUpCard } from '../Components/Auth/SignUpContent';
 import { loginUser, registerUser } from '../Services/firebase';
 import { initialTypes } from '../types/auth-types';
 import { signUpSchema } from '../Services/signUpSchema';
@@ -6,7 +6,7 @@ import { FormikHelpers } from 'formik';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 
-export default SignUpPage = () => {
+const SignUp = () => {
   const initialValues: initialTypes = {
     firstName: '',
     lastName: '',
@@ -38,3 +38,5 @@ export default SignUpPage = () => {
     />
   );
 };
+
+export default SignUp;

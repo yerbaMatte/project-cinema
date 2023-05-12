@@ -30,7 +30,7 @@ interface Props {
   validationSchema: Yup.ObjectSchema<loginCredentials>;
 }
 
-export default function SignInCard({
+export default function SignInContent({
   initialValues,
   logIn,
   validationSchema,
