@@ -14,6 +14,7 @@ export function App() {
       children: [
         { index: true, element: <Home /> },
         { path: 'nowplaying', element: <NowPlaying /> },
+        { path: 'nowplaying/:day', element: <NowPlaying /> },
         { path: 'signup', element: <SignUp /> },
         { path: 'signin', element: <SignIn /> },
         { path: 'myaccount', element: <MyAccount /> },
