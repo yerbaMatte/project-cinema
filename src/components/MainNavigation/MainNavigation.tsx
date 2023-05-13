@@ -155,10 +155,22 @@ interface NavItem {
   to?: string;
 }
 
+const date = new Date();
+const currentDay = date.getDay() - 1;
+const days = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday',
+];
+
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'NOW PLAYING',
-    to: 'nowplaying',
+    to: `nowplaying/${days[currentDay]}`,
   },
   {
     label: 'EVENTS',

@@ -1,11 +1,20 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import MoviesDayList from './MoviesDayList';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { useState } from 'react';
 
 function MoviesCalendarTab() {
-  const tabData = [
+  const date = new Date();
+  const currentDay = date.getDay() - 1;
+
+  const [tab, setTab] = useState(currentDay);
+
+  interface TabData {
+    day: string;
+    movieList: string;
+  }
+
+  const tabData: TabData[] = [
     { day: 'Monday', movieList: '1' },
     { day: 'Tuesday', movieList: '2' },
     { day: 'Wednesday', movieList: '3' },
@@ -15,22 +24,17 @@ function MoviesCalendarTab() {
     { day: 'Sunday', movieList: '7' },
   ];
 
-  const navigate = useNavigate();
-  const date = new Date();
-  const currentDay = date.getDay();
-  console.log(currentDay);
-
-  useEffect(() => {
-    navigate(`/nowplaying/${tabData[currentDay - 1]['day'].toLowerCase()}`);
-  }, []);
-
-  const CreateMoviesTab = ({ data }) => {
+  const CreateMoviesTab = ({ data }: { data: TabData[] }) => {
     return (
-      <Tabs isLazy defaultIndex={currentDay - 1}>
+      <Tabs isLazy defaultIndex={tab}>
         <TabList>
           {data.map((tab, index) => (
-            <Tab key={index}>
-              <Link to={`/nowplaying/${tab.day.toLowerCase()}`}>{tab.day}</Link>
+            <Tab
+              as={RouterLink}
+              key={index}
+              to={`/nowplaying/${tab.day.toLowerCase()}`}
+            >
+              {tab.day}
             </Tab>
           ))}
         </TabList>
