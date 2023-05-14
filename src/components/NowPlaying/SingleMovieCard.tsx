@@ -8,49 +8,68 @@ import {
   Button,
   Image,
   Badge,
+  HStack,
 } from '@chakra-ui/react';
+import { genresList } from '../../Services/genresList';
 
 interface CardProps {
   title: string;
   description: string;
   imgPath: string;
+  genreIds: Number[];
 }
 
-function SingleMovieCard({ title, description, imgPath }: CardProps) {
+function SingleMovieCard({ title, description, imgPath, genreIds }: CardProps) {
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
-      overflow='hidden'
-      variant='outline'
+      overflow="hidden"
+      variant="outline"
     >
       <Image
-        objectFit='cover'
+        objectFit="cover"
         maxW={{ base: '100%', sm: '200px' }}
         src={`https://image.tmdb.org/t/p/original/${imgPath}`}
-        alt='Caffe Latte'
+        alt="Caffe Latte"
         p={2}
       />
 
       <Stack>
         <CardBody>
-          <Heading size='md'>{title}</Heading>
-          <Text py='2'>{description}</Text>
-          <Badge m={1} fontSize={16}>
-            14:30
-          </Badge>
-          <Badge m={1} fontSize={16}>
-            17:00
-          </Badge>
-          <Badge m={1} fontSize={16}>
-            22:00
-          </Badge>
+          <Heading size="md">{title}</Heading>
+          <HStack>
+            {genreIds.map((id, ind) => (
+              <Badge
+                textTransform="capitalize"
+                m={1}
+                fontSize={12}
+                colorScheme="blackAlpha"
+                key={ind}
+              >
+                {genresList[id]}
+              </Badge>
+            ))}
+          </HStack>
+
+          <Text py="2">{description}</Text>
+          <HStack spacing={2}>
+            <Badge fontSize={16} colorScheme="blue">
+              14:30
+            </Badge>
+            <Badge fontSize={16} colorScheme="blue">
+              17:00
+            </Badge>
+            <Badge fontSize={16} colorScheme="blue">
+              22:00
+            </Badge>
+          </HStack>
         </CardBody>
 
         <CardFooter>
-          <Button m={1} variant='solid' colorScheme='blue'>
+          <Button m={1} variant="solid" colorScheme="blue">
             Buy Ticket!
           </Button>
-          <Button m={1} variant='solid' colorScheme='gray'>
+          <Button m={1} variant="solid" colorScheme="gray">
             Available Seats
           </Button>
         </CardFooter>
