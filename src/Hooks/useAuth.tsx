@@ -19,7 +19,6 @@ export const useAuth = () => {
         dispatch(signActions.setIsUserAccLoading(false));
         dispatch(signActions.setUser({ name: null, email: null }));
       }
-      // userAccLoading
     });
     return () => subscribe();
   }, []);

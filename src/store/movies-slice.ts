@@ -1,33 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Movie } from '../types/movies-types';
+import { useGetCurrentDay } from '../Hooks/useGetCurrentDay';
 
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-
-const date = new Date();
-const currentDay = date.getDay() - 1;
-const days = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday',
-];
+const { currentDay, days } = useGetCurrentDay();
 
 const initialState: {
   moviesData: { results: Movie[] };

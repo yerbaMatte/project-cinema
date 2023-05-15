@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import MainNavigation from '../Components/MainNavigation/MainNavigation';
-import { useAuth } from '../Hooks/onAuth';
+import { useAuth } from '../Hooks/useAuth';
 import { useAppSelector } from '../Hooks/hooks';
 
 const Root = () => {

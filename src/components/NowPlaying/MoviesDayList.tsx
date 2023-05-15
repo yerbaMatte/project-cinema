@@ -8,7 +8,6 @@ function MoviesDayList() {
   if (!dataList) {
     return <Spinner />;
   }
-  console.log(dataList);
 
   const CreateMovieList = dataList.map((movie, index) => (
     <SingleMovieCard
