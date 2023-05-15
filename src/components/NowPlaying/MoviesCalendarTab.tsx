@@ -2,11 +2,10 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import MoviesDayList from './MoviesDayList';
 import { Link as RouterLink } from 'react-router-dom';
 import { useState } from 'react';
+import useGetCurrentDay from '../../Hooks/useGetCurrentDay';
 
 function MoviesCalendarTab() {
-  const date = new Date();
-  const currentDay = date.getDay() - 1;
-
+  const { currentDay } = useGetCurrentDay();
   const [tab, setTab] = useState(currentDay);
 
   interface TabData {
