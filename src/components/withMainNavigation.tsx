@@ -1,5 +1,5 @@
-import { LoggedInNav } from './MainNavigation/LoggedIn/LoggedInNav';
-import { LoggedOutNav } from './MainNavigation/LoggedOut/LoggedOutNav';
+import { LoggedInButtons } from './MainNavigation/LoggedIn/LoggedInButtons';
+import { LoggedOutButtons } from './MainNavigation/LoggedOut/LoggedOutButtons';
 import { useAppSelector } from '../Hooks/hooks';
 
 type MainNavigationProps = {
@@ -16,13 +16,13 @@ const withMainNavigation = (
     if (userName) {
       return (
         <Component>
-          <LoggedInNav />
+          <LoggedInButtons />
         </Component>
       );
     } else {
       return (
         <Component>
-          <LoggedOutNav />
+          <LoggedOutButtons />
         </Component>
       );
     }

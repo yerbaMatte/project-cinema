@@ -10,7 +10,7 @@ import {
   Badge,
   HStack,
 } from '@chakra-ui/react';
-import { genresList } from '../../Services/genresList';
+import { genresList } from '../../Services/nowPlaying';
 
 interface CardProps {
   title: string;
@@ -31,7 +31,7 @@ function SingleMovieCard({ title, description, imgPath, genreIds }: CardProps) {
         maxW={{ base: '100%', sm: '200px' }}
         src={`https://image.tmdb.org/t/p/original/${imgPath}`}
         alt='Caffe Latte'
-        p={2}
+        p={3}
       />
 
       <Stack>
@@ -64,7 +64,6 @@ function SingleMovieCard({ title, description, imgPath, genreIds }: CardProps) {
             </Badge>
           </HStack>
         </CardBody>
-
         <CardFooter>
           <Button m={1} variant='solid' colorScheme='blue'>
             Buy Ticket!

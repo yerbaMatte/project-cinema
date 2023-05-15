@@ -1,3 +1,5 @@
+import { TabData } from '../types/movies-types';
+
 export const genresList = {
   28: 'Action',
   12: 'Adventure',
@@ -19,3 +21,13 @@ export const genresList = {
   10752: 'War',
   37: 'Western',
 };
+
+export const tabData: TabData[] = [
+  { day: 'Monday', movieList: '1' },
+  { day: 'Tuesday', movieList: '2' },
+  { day: 'Wednesday', movieList: '3' },
+  { day: 'Thursday', movieList: '4' },
+  { day: 'Friday', movieList: '5' },
+  { day: 'Saturday', movieList: '6' },
+  { day: 'Sunday', movieList: '7' },
+];

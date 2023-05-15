@@ -1,7 +1,7 @@
 import { SignUpButton } from './SignUpButton';
 import { SignInButton } from './SignInButton';
 
-export const LoggedOutNav = () => {
+export const LoggedOutButtons = () => {
   return (
     <>
       <SignUpButton />

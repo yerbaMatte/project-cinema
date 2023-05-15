@@ -1,10 +1,10 @@
 import { MyAccountButton } from './MyAccountButton';
-import { SignOutButton } from '../LoggedIn/SignOutButton';
-import { WelcomeMessage } from '../LoggedIn/WelcomeMessage';
+import { SignOutButton } from './SignOutButton';
+import { WelcomeMessage } from './WelcomeMessage';
 import { useAppSelector } from '../../../Hooks/hooks';
 import { signOutUser } from '../../../Services/firebase';
 
-export const LoggedInNav = () => {
+export const LoggedInButtons = () => {
   const signOutHandler = () => {
     signOutUser();
   };

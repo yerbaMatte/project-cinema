@@ -2,18 +2,23 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SignUp from './Pages/SignUp';
 import SignIn from './Pages/SignIn';
 import MyAccount from './Pages/MyAccount';
-import NowPlaying from './Pages/NowPlaying';
+import NowPlayingLayout from './Pages/NowPlayingLayout';
+import MoviesDayList from './Components/NowPlaying/MoviesDayList';
 import Home from './Pages/Home';
-import Root from './Pages/Root';
+import RootLayout from './Pages/RootLayout';
 
 export function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Root />,
+      element: <RootLayout />,
       children: [
         { index: true, element: <Home /> },
-        { path: 'nowplaying/:day', element: <NowPlaying /> },
+        {
+          path: 'nowplaying',
+          element: <NowPlayingLayout />,
+          children: [{ path: ':id', element: <MoviesDayList /> }],
+        },
         { path: 'signup', element: <SignUp /> },
         { path: 'signin', element: <SignIn /> },
         { path: 'myaccount', element: <MyAccount /> },
