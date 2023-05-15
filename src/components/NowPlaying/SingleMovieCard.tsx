@@ -31,7 +31,7 @@ function SingleMovieCard({ title, description, imgPath, genreIds }: CardProps) {
         maxW={{ base: '100%', sm: '200px' }}
         src={`https://image.tmdb.org/t/p/original/${imgPath}`}
         alt='Caffe Latte'
-        p={3}
+        p={4}
       />
 
       <Stack>

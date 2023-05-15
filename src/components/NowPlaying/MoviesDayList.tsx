@@ -10,6 +10,8 @@ function MoviesDayList() {
   if (!dataList) {
     return <Spinner />;
   }
+  console.log(dataList.map((x) => x.id));
+  console.log(dataList);
 
   return (
     <>

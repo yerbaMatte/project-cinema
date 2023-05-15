@@ -13,6 +13,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { Link as RouteLink } from 'react-router-dom';
 import withMainNavigation from '../withMainNavigation';
+import useGetCurrentDay from '../../Hooks/useGetCurrentDay';
 
 type MainNavigationProps = {
   children: JSX.Element;
@@ -49,7 +50,7 @@ function MainNavigation({ children }: MainNavigationProps) {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <RouteLink to="/">
+          <RouteLink to='/'>
             <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
@@ -155,17 +156,7 @@ interface NavItem {
   to?: string;
 }
 
-const date = new Date();
-const currentDay = date.getDay() - 1;
-const days = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday',
-];
+const { currentDay, days } = useGetCurrentDay();
 
 const NAV_ITEMS: Array<NavItem> = [
   {
