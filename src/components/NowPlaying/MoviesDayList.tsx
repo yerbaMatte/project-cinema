@@ -3,6 +3,7 @@ import { useAppSelector } from '../../Hooks/hooks';
 import { Spinner } from '@chakra-ui/react';
 import { TabPanels, TabPanel } from '@chakra-ui/react';
 import { tabData } from '../../Services/nowPlaying';
+import { schedule } from '../../Services/nowPlaying';
 
 function MoviesDayList() {
   const dataList = useAppSelector((state) => state.movies.moviesData.results);
@@ -10,8 +11,10 @@ function MoviesDayList() {
   if (!dataList) {
     return <Spinner />;
   }
-  console.log(dataList.map((x) => x.id));
+
   console.log(dataList);
+  console.log(schedule);
+  console.log(schedule[0]);
 
   return (
     <>

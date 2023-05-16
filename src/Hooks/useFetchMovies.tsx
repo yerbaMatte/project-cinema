@@ -31,3 +31,24 @@ export default function useFetchMovies() {
     getMoviesData();
   }, []);
 }
+// example of fetched movie by watchlist snippet request // no duration // no generated genres strings //
+// {
+//   "adult": false,
+//   "backdrop_path": "/wDe8LzwuvHYYiuwyNfxdYQq8ti4.jpg",
+//   "genre_ids": [
+//       12,
+//       28,
+//       878
+//   ],
+//   "id": 1893,
+//   "original_language": "en",
+//   "original_title": "Star Wars: Episode I - The Phantom Menace",
+//   "overview": "Anakin Skywalker, a young slave strong with the Force, is discovered on Tatooine. Meanwhile, the evil Sith have returned, enacting their plot for revenge against the Jedi.",
+//   "popularity": 38.087,
+//   "poster_path": "/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
+//   "release_date": "1999-05-19",
+//   "title": "Star Wars: Episode I - The Phantom Menace",
+//   "video": false,
+//   "vote_average": 6.528,
+//   "vote_count": 13185
+// }
