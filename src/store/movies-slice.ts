@@ -2,22 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Movie } from '../types/movies-types';
 import { useGetCurrentDay } from '../Hooks/useGetCurrentDay';
 
-const { currentDay, days } = useGetCurrentDay();
-
 const initialState: {
-  moviesData: { results: Movie[] };
-  currentDay: string;
+  moviesData: Record<number, Movie>;
 } = {
-  moviesData: { results: [] },
-  currentDay: days[currentDay],
+  moviesData: {},
 };
 
 export const moviesSlice = createSlice({
   name: 'movies',
   initialState: initialState,
   reducers: {
-    setData(state, action) {
-      state.moviesData = action.payload;
+    addData(state, action) {
+      const { key, value } = action.payload;
+      state.moviesData[key] = value;
     },
   },
 });

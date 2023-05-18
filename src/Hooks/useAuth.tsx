@@ -11,7 +11,6 @@ export const useAuth = () => {
       if (user) {
         const { displayName: name, email } = user;
         dispatch(signActions.setUser({ name, email }));
-
         console.log('User is logged in');
         dispatch(signActions.setIsUserAccLoading(false));
       } else {

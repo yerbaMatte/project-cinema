@@ -38,17 +38,12 @@ function SingleMovieCard({ title, description, imgPath, genreIds }: CardProps) {
         <CardBody>
           <Heading size='md'>{title}</Heading>
           <HStack>
-            {genreIds.map((id, ind) => (
-              <Badge
-                textTransform='capitalize'
-                m={1}
-                fontSize={12}
-                colorScheme='blackAlpha'
-                key={ind}
-              >
-                {genresList[id]}
-              </Badge>
-            ))}
+            <Badge
+              textTransform='capitalize'
+              m={1}
+              fontSize={12}
+              colorScheme='blackAlpha'
+            ></Badge>
           </HStack>
 
           <Text py='2'>{description}</Text>

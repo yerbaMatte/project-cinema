@@ -22,20 +22,6 @@ export const genresList = {
   37: 'Western',
 };
 
-export const tabData: TabData[] = [
-  { day: 'Monday', movieList: '1' },
-  { day: 'Tuesday', movieList: '2' },
-  { day: 'Wednesday', movieList: '3' },
-  { day: 'Thursday', movieList: '4' },
-  { day: 'Friday', movieList: '5' },
-  { day: 'Saturday', movieList: '6' },
-  { day: 'Sunday', movieList: '7' },
-];
-
-export const moviesId = [
-  1893, 672, 77338, 497, 238, 120, 475557, 9732, 111, 13223, 808, 98,
-];
-
 export const schedule = {
   0: {
     1893: { start: '10:00 AM' },
@@ -59,7 +45,6 @@ export const schedule = {
   3: {
     1893: { start: '11:30 AM' },
     9732: { start: '10:00 PM' },
-    111: { start: '11:30 PM' },
   },
   4: {
     120: { start: '05:30 PM' },
@@ -79,3 +64,17 @@ export const schedule = {
     120: { start: '06:30 PM' },
   },
 };
+
+export const tabData: TabData[] = [
+  { day: 'Monday', movieList: schedule[0] },
+  { day: 'Tuesday', movieList: schedule[1] },
+  { day: 'Wednesday', movieList: schedule[2] },
+  { day: 'Thursday', movieList: schedule[3] },
+  { day: 'Friday', movieList: schedule[4] },
+  { day: 'Saturday', movieList: schedule[5] },
+  { day: 'Sunday', movieList: schedule[6] },
+];
+
+export const moviesId = [
+  1893, 672, 77338, 497, 238, 120, 475557, 9732, 111, 13223, 808, 98,
+];
