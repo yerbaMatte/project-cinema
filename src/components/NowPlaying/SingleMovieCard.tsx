@@ -17,9 +17,18 @@ interface CardProps {
   description: string;
   imgPath: string;
   genreIds: number[];
+  startAt: any;
+  duration: any;
 }
 
-function SingleMovieCard({ title, description, imgPath, genreIds }: CardProps) {
+function SingleMovieCard({
+  title,
+  description,
+  imgPath,
+  genreIds,
+  startAt,
+  duration,
+}: CardProps) {
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -36,26 +45,28 @@ function SingleMovieCard({ title, description, imgPath, genreIds }: CardProps) {
 
       <Stack>
         <CardBody>
-          <Heading size='md'>{title}</Heading>
+          <Heading size='md' padding={1}>
+            {title}
+          </Heading>
           <HStack>
-            <Badge
-              textTransform='capitalize'
-              m={1}
-              fontSize={12}
-              colorScheme='blackAlpha'
-            ></Badge>
+            {genreIds.map((genre, id) => (
+              <Badge
+                textTransform='capitalize'
+                m={1}
+                fontSize={12}
+                colorScheme='blackAlpha'
+                key={id}
+              >
+                {genre.name}
+              </Badge>
+            ))}
+            <Text fontSize={12}>{duration} min</Text>
           </HStack>
 
           <Text py='2'>{description}</Text>
           <HStack spacing={2}>
             <Badge fontSize={16} colorScheme='blue'>
-              14:30
-            </Badge>
-            <Badge fontSize={16} colorScheme='blue'>
-              17:00
-            </Badge>
-            <Badge fontSize={16} colorScheme='blue'>
-              22:00
+              {startAt}
             </Badge>
           </HStack>
         </CardBody>

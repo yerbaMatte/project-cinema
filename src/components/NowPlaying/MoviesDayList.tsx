@@ -26,7 +26,7 @@ function MoviesDayList() {
             <TabPanel key={index}>
               {/* inside each TabPanel render MovieCard for each movie*/}
 
-              {Object.keys(movieList).map((movieNo, index) => {
+              {Object.keys(movieList).map((movieNo, ind) => {
                 const movie = dataList[movieNo];
                 console.log(movie);
 
@@ -35,8 +35,10 @@ function MoviesDayList() {
                     title={movie['original_title']}
                     description={movie.overview}
                     imgPath={movie['poster_path']}
-                    key={index}
-                    genreIds={movie['genre_ids']}
+                    key={ind}
+                    genreIds={movie.genres}
+                    startAt={schedule[index][movieNo]['start']}
+                    duration={movie.runtime}
                   />
                 );
               })}
