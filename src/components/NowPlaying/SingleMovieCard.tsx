@@ -10,15 +10,16 @@ import {
   Badge,
   HStack,
 } from '@chakra-ui/react';
-import { genresList } from '../../Services/nowPlaying';
 
 interface CardProps {
   title: string;
   description: string;
   imgPath: string;
-  genreIds: number[];
-  startAt: any;
-  duration: any;
+  genreIds: object[];
+  startAt: string;
+  duration: string;
+  score: number;
+  noOfVotes: number;
 }
 
 function SingleMovieCard({
@@ -28,6 +29,8 @@ function SingleMovieCard({
   genreIds,
   startAt,
   duration,
+  score,
+  noOfVotes,
 }: CardProps) {
   return (
     <Card
@@ -45,9 +48,17 @@ function SingleMovieCard({
 
       <Stack>
         <CardBody>
-          <Heading size='md' padding={1}>
-            {title}
-          </Heading>
+          <HStack justifyContent='space-between'>
+            <Heading size='md' padding={1}>
+              {title}
+            </Heading>
+            <HStack bgColor='ButtonHighlight' padding={1} borderRadius={12}>
+              <Badge colorScheme='none' fontSize={18} textTransform='lowercase'>
+                ⭐️ {score.toFixed(2)}+
+              </Badge>
+              <Text fontSize={12}>{noOfVotes} votes</Text>
+            </HStack>
+          </HStack>
           <HStack>
             {genreIds.map((genre, id) => (
               <Badge

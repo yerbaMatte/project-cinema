@@ -1,9 +1,7 @@
 import SingleMovieCard from './SingleMovieCard';
 import { useAppSelector } from '../../Hooks/hooks';
-import { Spinner } from '@chakra-ui/react';
-import { TabPanels, TabPanel } from '@chakra-ui/react';
-import { tabData } from '../../Services/nowPlaying';
-import { schedule } from '../../Services/nowPlaying';
+import { Spinner, TabPanels, TabPanel  } from '@chakra-ui/react';
+import { tabData, schedule } from '../../Services/nowPlaying';
 
 function MoviesDayList() {
   const dataList = useAppSelector((state) => state.movies.moviesData);
@@ -28,7 +26,6 @@ function MoviesDayList() {
 
               {Object.keys(movieList).map((movieNo, ind) => {
                 const movie = dataList[movieNo];
-                console.log(movie);
 
                 return (
                   <SingleMovieCard
@@ -39,6 +36,8 @@ function MoviesDayList() {
                     genreIds={movie.genres}
                     startAt={schedule[index][movieNo]['start']}
                     duration={movie.runtime}
+                    score={movie['vote_average']}
+                    noOfVotes={movie['vote_count']}
                   />
                 );
               })}

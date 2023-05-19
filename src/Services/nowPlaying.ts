@@ -1,27 +1,5 @@
 import { TabData } from '../types/movies-types';
 
-export const genresList = {
-  28: 'Action',
-  12: 'Adventure',
-  16: 'Animation',
-  35: 'Comedy',
-  80: 'Crime',
-  99: 'Documentary',
-  18: 'Drama',
-  10751: 'Family',
-  14: 'Fantasy',
-  36: 'History',
-  27: 'Horror',
-  10402: 'Music',
-  9648: 'Mystery',
-  10749: 'Romance',
-  878: 'Science Fiction',
-  10770: 'TV Movie',
-  53: 'Thriller',
-  10752: 'War',
-  37: 'Western',
-};
-
 export const schedule = {
   0: {
     1893: { start: '10:00 AM' },
@@ -78,3 +56,25 @@ export const tabData: TabData[] = [
 export const moviesId = [
   1893, 672, 77338, 497, 238, 120, 475557, 9732, 111, 13223, 808, 98,
 ];
+
+// export const genresList = {
+//   28: 'Action',
+//   12: 'Adventure',
+//   16: 'Animation',
+//   35: 'Comedy',
+//   80: 'Crime',
+//   99: 'Documentary',
+//   18: 'Drama',
+//   10751: 'Family',
+//   14: 'Fantasy',
+//   36: 'History',
+//   27: 'Horror',
+//   10402: 'Music',
+//   9648: 'Mystery',
+//   10749: 'Romance',
+//   878: 'Science Fiction',
+//   10770: 'TV Movie',
+//   53: 'Thriller',
+//   10752: 'War',
+//   37: 'Western',
+// };
