@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Movie } from '../types/movies-types';
-import { useGetCurrentDay } from '../Hooks/useGetCurrentDay';
 
 const initialState: {
   moviesData: Record<number, Movie>;

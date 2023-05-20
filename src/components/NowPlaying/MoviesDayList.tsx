@@ -1,11 +1,10 @@
 import SingleMovieCard from './SingleMovieCard';
 import { useAppSelector } from '../../Hooks/hooks';
-import { Spinner, TabPanels, TabPanel  } from '@chakra-ui/react';
+import { Spinner, TabPanels, TabPanel } from '@chakra-ui/react';
 import { tabData, schedule } from '../../Services/nowPlaying';
 
 function MoviesDayList() {
   const dataList = useAppSelector((state) => state.movies.moviesData);
-  console.log(dataList);
 
   if (Object.keys(dataList).length === 0) {
     return (
