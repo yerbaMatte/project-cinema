@@ -35,26 +35,26 @@ function SingleMovieCard({
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
-      overflow='hidden'
-      variant='outline'
+      overflow="hidden"
+      variant="outline"
     >
       <Image
-        objectFit='cover'
+        objectFit="cover"
         maxW={{ base: '100%', sm: '200px' }}
         src={`https://image.tmdb.org/t/p/original/${imgPath}`}
-        alt='Caffe Latte'
+        alt="Caffe Latte"
         p={4}
       />
 
-      <Stack>
+      <Stack width="100%">
         <CardBody>
-          <HStack justifyContent='space-between'>
-            <Heading size='md' padding={1}>
+          <HStack justifyContent="space-between">
+            <Heading size="md" padding={1}>
               {title}
             </Heading>
-            <HStack bgColor='ButtonHighlight' padding={1} borderRadius={12}>
-              <Badge colorScheme='none' fontSize={18} textTransform='lowercase'>
-                ⭐️ {score.toFixed(2)}+
+            <HStack bgColor="ButtonHighlight" padding={1} borderRadius={12}>
+              <Badge colorScheme="none" fontSize={18} textTransform="lowercase">
+                ⭐️ {score.toFixed(2)}
               </Badge>
               <Text fontSize={12}>{noOfVotes} votes</Text>
             </HStack>
@@ -62,10 +62,10 @@ function SingleMovieCard({
           <HStack>
             {genreIds.map((genre, id) => (
               <Badge
-                textTransform='capitalize'
+                textTransform="capitalize"
                 m={1}
                 fontSize={12}
-                colorScheme='blackAlpha'
+                colorScheme="blackAlpha"
                 key={id}
               >
                 {genre.name}
@@ -74,18 +74,18 @@ function SingleMovieCard({
             <Text fontSize={12}>{duration} min</Text>
           </HStack>
 
-          <Text py='2'>{description}</Text>
+          <Text py="2">{description}</Text>
           <HStack spacing={2}>
-            <Badge fontSize={16} colorScheme='blue'>
+            <Badge fontSize={16} colorScheme="blue">
               {startAt}
             </Badge>
           </HStack>
         </CardBody>
         <CardFooter>
-          <Button m={1} variant='solid' colorScheme='blue'>
+          <Button m={1} variant="solid" colorScheme="blue">
             Buy Ticket!
           </Button>
-          <Button m={1} variant='solid' colorScheme='gray'>
+          <Button m={1} variant="solid" colorScheme="gray">
             Available Seats
           </Button>
         </CardFooter>

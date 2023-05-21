@@ -4,7 +4,10 @@ import { Tabs } from '@chakra-ui/react';
 import useGetCurrentDay from '../Hooks/useGetCurrentDay';
 
 export function NowPlayingLayout() {
-  const { currentDay } = useGetCurrentDay();
+  let { currentDay } = useGetCurrentDay();
+  if (currentDay === -1) {
+    currentDay = 6;
+  }
 
   return (
     <>

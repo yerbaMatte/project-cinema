@@ -1,4 +1,4 @@
-import WelcomeComponent from '../Components/Home/WelcomeComponent';
+import WelcomeComponent from '../Components/Home/PromoComponent';
 import MoviesSlider from '../Components/Home/MoviesSlider';
 
 const Home = () => {

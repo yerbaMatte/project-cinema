@@ -2,44 +2,76 @@ import { useAppSelector } from '../../Hooks/hooks';
 import AliceCarousel from 'react-alice-carousel';
 import { Box } from '@chakra-ui/react';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import filmTape from './film.png';
+import { useState } from 'react';
 
-const handleDragStart = (e) => e.preventDefault();
+const MovieItem = ({ movie }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const carouselItemStyles = {
+    transform: `scale(${isHovered ? '1.2' : '1'})`,
+    transition: 'transform 0.3s ease-in-out',
+  };
+
+  return (
+    <Box
+      w="200px"
+      h="100%"
+      p={6}
+      overflow="hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={carouselItemStyles}
+      // cursor="pointer"
+    >
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movie['poster_path']}`}
+        role="presentation"
+        alt={`Movie ${movie.id}`}
+        width="100%"
+        height="100%"
+        style={{ borderRadius: '12px' }}
+      />
+    </Box>
+  );
+};
 
 const MoviesSlider = () => {
   const dataList = useAppSelector((state) => state.movies.moviesData);
+  const movies = Object.values(dataList).map((movie) => (
+    <MovieItem key={movie.id} movie={movie} />
+  ));
 
-  const movies = Object.keys(dataList).map((movie) => (
+  return (
     <Box
-      key={movie}
-      w='250px'
-      h='400px'
-      p={4}
-      boxShadow='md'
-      borderRadius='md'
-      overflow='hidden'
+      height="340px"
+      style={{
+        backgroundImage: `url(${filmTape})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
     >
-      <img
-        src={`https://image.tmdb.org/t/p/original/${dataList[movie]['poster_path']}`}
-        onDragStart={handleDragStart}
-        role='presentation'
-        alt={`Movie ${movie}`}
-        width='100%'
-        height='100%'
+      <AliceCarousel
+        infinite
+        autoWidth
+        mouseTracking
+        items={movies}
+        animationDuration={1200}
+        autoPlay={true}
+        disableDotsControls
+        disableButtonsControls
       />
     </Box>
-  ));
-  return (
-    <AliceCarousel
-      infinite
-      autoWidth
-      mouseTracking
-      items={movies}
-      animationDuration={800}
-      autoPlay={true}
-      autoPlayStrategy='action'
-      disableDotsControls
-      disableButtonsControls
-    />
   );
 };
 
