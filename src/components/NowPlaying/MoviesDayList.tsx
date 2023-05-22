@@ -5,7 +5,6 @@ import { tabData, schedule } from '../../Services/nowPlaying';
 
 function MoviesDayList() {
   const dataList = useAppSelector((state) => state.movies.moviesData);
-  console.log(dataList);
 
   if (Object.keys(dataList).length === 0) {
     return (

@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import NowPlayingNav from '../Components/NowPlaying/NowPlayingNav';
 import { Tabs } from '@chakra-ui/react';
 import useGetCurrentDay from '../Hooks/useGetCurrentDay';

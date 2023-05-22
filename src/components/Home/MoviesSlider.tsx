@@ -1,13 +1,26 @@
 import { useAppSelector } from '../../Hooks/hooks';
 import AliceCarousel from 'react-alice-carousel';
-import { Badge, Box, Button, Text } from '@chakra-ui/react';
+import { Badge, Box } from '@chakra-ui/react';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import filmTape from './film.png';
 import { useState } from 'react';
-import { ModalMovieDetails } from './ModalMovieDetails';
+import { useDisclosure } from '@chakra-ui/react';
+import {
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
 
 const MovieItem = ({ movie }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -33,7 +46,7 @@ const MovieItem = ({ movie }) => {
       style={carouselItemStyles}
       cursor='pointer'
     >
-      <ModalMovieDetails>
+      <Link onClick={onOpen} to={`/home/${movie.title}`}>
         <img
           src={`https://image.tmdb.org/t/p/original/${movie['poster_path']}`}
           role='presentation'
@@ -42,7 +55,24 @@ const MovieItem = ({ movie }) => {
           height='100%'
           style={{ borderRadius: '12px' }}
         />
-      </ModalMovieDetails>
+      </Link>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{movie.title}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>TEXT</ModalBody>
+
+          <ModalFooter>
+            <Link to='.'>
+              <Button colorScheme='blue' mr={3} onClick={onClose}>
+                Close
+              </Button>
+            </Link>
+            <Button variant='ghost'>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };

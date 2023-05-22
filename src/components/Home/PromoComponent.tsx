@@ -5,117 +5,117 @@ import joker from './joker.jpeg';
 import intouch from './intouch.jpeg';
 import lord from './lord.webp';
 
-const SinglePromoBoard = () => (
+const JokerPromoBoard = () => (
   <Box
-    textAlign="center"
+    textAlign='center'
     p={8}
     backgroundImage={`linear-gradient(to bottom, rgba(0,0,0,0) 95%, rgba(255, 255, 255,5.5) 100%), url(${joker})`}
-    backgroundSize="cover"
-    backgroundPosition="top"
-    height="md"
-    position="relative"
+    backgroundSize='cover'
+    backgroundPosition='top'
+    height='md'
+    position='relative'
   >
     <Heading
-      as="h1"
-      size="2xl"
+      as='h1'
+      size='2xl'
       mb={4}
-      color="ButtonShadow"
-      bgGradient="linear(to-t, black.300, white)"
-      position="absolute"
+      color='ButtonShadow'
+      bgGradient='linear(to-t, black.300, white)'
+      position='absolute'
       top={4}
       left={4}
       letterSpacing={6}
-      fontWeight="thin"
+      fontWeight='thin'
     >
       JOKER
     </Heading>
     <Button
       // colorScheme="gray"
-      size="lg"
-      position="absolute"
+      size='lg'
+      position='absolute'
       bottom={20}
       right={20}
-      colorScheme="gray"
-      textTransform="uppercase"
-      fontWeight="bold"
+      colorScheme='gray'
+      textTransform='uppercase'
+      fontWeight='bold'
     >
       Get Ticket
     </Button>
   </Box>
 );
 
-const SecondoPromoBoard = () => (
+const IntouchPromoBoard = () => (
   <Box
-    textAlign="center"
+    textAlign='center'
     p={8}
     backgroundImage={`linear-gradient(to bottom, rgba(0,0,0,0) 95%, rgba(255, 255, 255,5.5) 100%), url(${intouch})`}
-    backgroundSize="cover"
-    backgroundPosition="top"
-    height="md"
-    position="relative"
+    backgroundSize='cover'
+    backgroundPosition='top'
+    height='md'
+    position='relative'
   >
     <Heading
-      as="h1"
-      size="2xl"
+      as='h1'
+      size='2xl'
       mb={4}
-      color="ButtonShadow"
-      position="absolute"
+      color='ButtonShadow'
+      position='absolute'
       top={4}
       left={4}
       letterSpacing={6}
-      fontWeight="thin"
+      fontWeight='thin'
     >
       INTOUCHABLES
     </Heading>
     <Button
-      size="lg"
-      position="absolute"
+      size='lg'
+      position='absolute'
       bottom={20}
       right={20}
-      colorScheme="gray"
-      textTransform="uppercase"
-      fontWeight="bold"
+      colorScheme='gray'
+      textTransform='uppercase'
+      fontWeight='bold'
     >
       Get Ticket
     </Button>
   </Box>
 );
 
-const TrioPromoBoard = () => (
+const RingPromoBoard = () => (
   <Box
-    textAlign="center"
+    textAlign='center'
     p={8}
     backgroundImage={`linear-gradient(to bottom, rgba(0,0,0,0) 95%, rgba(255, 255, 255,5.5) 100%), url(${lord})`}
-    backgroundSize="cover"
-    backgroundPosition="top"
-    height="md"
-    position="relative"
+    backgroundSize='cover'
+    backgroundPosition='top'
+    height='md'
+    position='relative'
   >
     <Heading
-      as="h1"
-      size="2xl"
+      as='h1'
+      size='2xl'
       mb={4}
-      color="ButtonShadow"
-      position="absolute"
+      color='ButtonShadow'
+      position='absolute'
       top={4}
       left={4}
       letterSpacing={6}
-      fontWeight="thin"
-      bgColor="rgba(0,0,0, 0.5)"
-      textTransform="uppercase"
+      fontWeight='thin'
+      bgColor='rgba(0,0,0, 0.5)'
+      textTransform='uppercase'
     >
       THE LORD OF THE RINGS
       <Text fontSize={24}>The Fellowship of the Ring</Text>
     </Heading>
     <Button
       // colorScheme="gray"
-      size="lg"
-      position="absolute"
+      size='lg'
+      position='absolute'
       bottom={20}
       right={20}
-      colorScheme="gray"
-      textTransform="uppercase"
-      fontWeight="bold"
+      colorScheme='gray'
+      textTransform='uppercase'
+      fontWeight='bold'
     >
       Get Ticket
     </Button>
@@ -126,18 +126,14 @@ function PromoComponent() {
   return (
     <>
       <AliceCarousel
-        animationType="fadeout"
+        animationType='fadeout'
         animationDuration={4500}
         autoPlay
         disableButtonsControls
         disableDotsControls
         infinite
         mouseTracking
-        items={[
-          <SinglePromoBoard />,
-          <SecondoPromoBoard />,
-          <TrioPromoBoard />,
-        ]}
+        items={[<JokerPromoBoard />, <IntouchPromoBoard />, <RingPromoBoard />]}
       />
     </>
   );

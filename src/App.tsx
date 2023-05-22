@@ -4,6 +4,7 @@ import SignIn from './Pages/SignIn';
 import MyAccount from './Pages/MyAccount';
 import NowPlayingLayout from './Pages/NowPlayingLayout';
 import MoviesDayList from './Components/NowPlaying/MoviesDayList';
+import { ModalMovieDetails } from './Components/Home/ModalMovieDetails';
 import Home from './Pages/Home';
 import RootLayout from './Pages/RootLayout';
 
@@ -16,16 +17,17 @@ export function App() {
         {
           path: 'home',
           element: <Home />,
-          children: [{ path: ':movieslider', element: <p>details</p> }],
+          children: [{ path: ':movieTitle', element: <ModalMovieDetails /> }],
         },
         {
           path: 'nowplaying',
           element: <NowPlayingLayout />,
-          children: [{ path: ':id', element: <MoviesDayList /> }],
+          children: [{ path: ':day', element: <MoviesDayList /> }],
         },
         { path: 'signup', element: <SignUp /> },
         { path: 'signin', element: <SignIn /> },
         { path: 'myaccount', element: <MyAccount /> },
+        { index: true, element: <Home /> },
       ],
     },
   ]);
