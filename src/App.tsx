@@ -13,7 +13,11 @@ export function App() {
       path: '/',
       element: <RootLayout />,
       children: [
-        { index: true, element: <Home /> },
+        {
+          path: 'home',
+          element: <Home />,
+          children: [{ path: ':movieslider', element: <p>details</p> }],
+        },
         {
           path: 'nowplaying',
           element: <NowPlayingLayout />,

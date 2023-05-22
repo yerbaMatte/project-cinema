@@ -1,9 +1,10 @@
 import { useAppSelector } from '../../Hooks/hooks';
 import AliceCarousel from 'react-alice-carousel';
-import { Box } from '@chakra-ui/react';
+import { Badge, Box, Button, Text } from '@chakra-ui/react';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import filmTape from './film.png';
 import { useState } from 'react';
+import { ModalMovieDetails } from './ModalMovieDetails';
 
 const MovieItem = ({ movie }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -23,23 +24,25 @@ const MovieItem = ({ movie }) => {
 
   return (
     <Box
-      w="200px"
-      h="100%"
+      w='200px'
+      h='100%'
       p={6}
-      overflow="hidden"
+      overflow='hidden'
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={carouselItemStyles}
-      // cursor="pointer"
+      cursor='pointer'
     >
-      <img
-        src={`https://image.tmdb.org/t/p/original/${movie['poster_path']}`}
-        role="presentation"
-        alt={`Movie ${movie.id}`}
-        width="100%"
-        height="100%"
-        style={{ borderRadius: '12px' }}
-      />
+      <ModalMovieDetails>
+        <img
+          src={`https://image.tmdb.org/t/p/original/${movie['poster_path']}`}
+          role='presentation'
+          alt={`Movie ${movie.id}`}
+          width='100%'
+          height='100%'
+          style={{ borderRadius: '12px' }}
+        />
+      </ModalMovieDetails>
     </Box>
   );
 };
@@ -51,27 +54,39 @@ const MoviesSlider = () => {
   ));
 
   return (
-    <Box
-      height="340px"
-      style={{
-        backgroundImage: `url(${filmTape})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <AliceCarousel
-        infinite
-        autoWidth
-        mouseTracking
-        items={movies}
-        animationDuration={1200}
-        autoPlay={true}
-        disableDotsControls
-        disableButtonsControls
-      />
-    </Box>
+    <>
+      <Badge
+        fontWeight='light'
+        fontSize={18}
+        color='black'
+        colorScheme='whiteAlpha'
+        textDecoration='underline'
+      >
+        🎬 Now we are playing:
+      </Badge>
+      <Box
+        height='340px'
+        overflow='hidden'
+        style={{
+          backgroundImage: `url(${filmTape})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <AliceCarousel
+          infinite
+          autoWidth
+          mouseTracking
+          items={movies}
+          animationDuration={1200}
+          // autoPlay={true}
+          disableDotsControls
+          disableButtonsControls
+        />
+      </Box>
+    </>
   );
 };
 

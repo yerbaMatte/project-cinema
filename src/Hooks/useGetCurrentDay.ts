@@ -3,13 +3,13 @@ export function useGetCurrentDay() {
   let currentDay = date.getDay() - 1;
 
   const days = [
-    'sunday',
     'monday',
     'tuesday',
     'wednesday',
     'thursday',
     'friday',
     'saturday',
+    'sunday',
   ];
 
   return { currentDay, days };
