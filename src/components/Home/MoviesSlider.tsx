@@ -30,6 +30,10 @@ const MovieItem = ({ movie }) => {
     setIsHovered(false);
   };
 
+  const onClickHandler = (e) => {
+    console.log(e.target);
+  };
+
   const carouselItemStyles = {
     transform: `scale(${isHovered ? '1.2' : '1'})`,
     transition: 'transform 0.3s ease-in-out',
@@ -41,12 +45,10 @@ const MovieItem = ({ movie }) => {
       h='100%'
       p={6}
       overflow='hidden'
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       style={carouselItemStyles}
       cursor='pointer'
     >
-      <Link onClick={onOpen} to={`/home/${movie.title}`}>
+      <Link onClick={onOpen} to={`/home/${movie.id}`}>
         <img
           src={`https://image.tmdb.org/t/p/original/${movie['poster_path']}`}
           role='presentation'
@@ -54,6 +56,10 @@ const MovieItem = ({ movie }) => {
           width='100%'
           height='100%'
           style={{ borderRadius: '12px' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          id={movie.id}
+          onClick={onClickHandler}
         />
       </Link>
       <Modal isOpen={isOpen} onClose={onClose}>

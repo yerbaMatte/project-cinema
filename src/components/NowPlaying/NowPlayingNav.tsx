@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { TabData } from '../../types/movies-types';
 import { tabData } from '../../Services/nowPlaying';
 
-function NowPlayingTab() {
+function NowPlayingNav() {
   const CreateMoviesTab = ({ data }: { data: TabData[] }) => {
     return (
       <>
@@ -25,4 +25,4 @@ function NowPlayingTab() {
   return <CreateMoviesTab data={tabData} />;
 }
 
-export default NowPlayingTab;
+export default NowPlayingNav;
