@@ -29,6 +29,7 @@ The following dependencies are used in this project:
 - Redux: A predictable state container for managing application state.
 - Axios: A promise-based HTTP client for making API requests.
 - Chakra-UI: A popular React UI framework for designing responsive web applications.
+- Yup: A schema builder for runtime value parsing and validation. 
 
 ## License
 
