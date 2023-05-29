@@ -33,7 +33,7 @@ The following dependencies are used in this project:
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use and modify the codebase as per the terms of the license.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Acknowledgements
 
