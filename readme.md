@@ -1,4 +1,4 @@
-# Project Cinema
+# Project Cinema 🎬
 
 Project Cinema is a React-based web application designed to facilitate the booking of movie tickets and enhance the cinema experience. With an intuitive user interface and a range of features, users can easily browse movies, select showtimes, and reserve seats for their preferred screenings.
 
