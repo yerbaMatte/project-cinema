@@ -37,5 +37,5 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Acknowledgements
 
-- The project uses data from [The Movie Database (TMDb)](https://www.themoviedb.org/) API.
+- The project uses data from [The Movie Database (TMDb)](https://www.themoviedb.org/) API
 - Special thanks to the contributors and maintainers of the dependencies used in this project for their valuable work.
