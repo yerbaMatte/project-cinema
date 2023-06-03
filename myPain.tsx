@@ -1,4 +1,4 @@
-// Pain number 1
+// TO CHECK
 
 const Layout =
   (Component) =>
