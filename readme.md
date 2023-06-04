@@ -12,8 +12,6 @@ Project Cinema is a React-based web application designed to facilitate the booki
 
 ## Getting Started
 
-To run the project locally, follow these steps:
-
 1. Clone the repository: `git clone https://github.com/yerbaMatte/project-cinema.git`
 2. Navigate to the project directory: `cd project-cinema`
 3. Install dependencies: `npm install`
