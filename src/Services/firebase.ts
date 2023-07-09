@@ -26,7 +26,7 @@ export const registerUser = async ({
     }
   }
 };
-//
+// test
 
 export const signOutUser = async () => {
   try {
