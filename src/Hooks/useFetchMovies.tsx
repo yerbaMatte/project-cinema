@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAppDispatch } from './hooks';
 import { moviesActions } from '../Store/movies-slice';
 
+// movies ids
 export const moviesId = [
   1893, 672, 77338, 497, 238, 120, 475557, 9732, 111, 13223, 808, 98,
 ];
